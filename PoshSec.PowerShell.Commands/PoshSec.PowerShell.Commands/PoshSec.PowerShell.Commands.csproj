@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PowerShell\Commands\GetDateISO8601.cs" />
+    <Compile Include="PowerShell\Commands\GetPoshFileIntegrity.cs" />
     <Compile Include="PowerShell\Commands\PoshSecHelloCommand.cs" />
     <Compile Include="PowerShell\Nouns.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Get-InstalledSoftware.ps1" />
+    <None Include="Scripts\Get-SoftwareIntegrity.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

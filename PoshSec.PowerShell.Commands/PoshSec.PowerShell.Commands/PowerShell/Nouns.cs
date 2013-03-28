@@ -14,5 +14,6 @@ namespace PoshSec.PowerShell
     {
         public const string PoshSecHello = "PoshSecHello";
         public const string DateISO8601 = "DateISO8601";
+        public const string PoshFileIntegrity = "PoshFileIntegrity";
     }
 }
