@@ -2,3 +2,4 @@ H:\github\PoshSec\PoshSec.PowerShell.Commands\PoshSec.PowerShell.Commands\bin\De
 H:\github\PoshSec\PoshSec.PowerShell.Commands\PoshSec.PowerShell.Commands\bin\Debug\PoshSec.PowerShell.Commands.pdb
 H:\github\PoshSec\PoshSec.PowerShell.Commands\PoshSec.PowerShell.Commands\obj\Debug\PoshSec.PowerShell.Commands.dll
 H:\github\PoshSec\PoshSec.PowerShell.Commands\PoshSec.PowerShell.Commands\obj\Debug\PoshSec.PowerShell.Commands.pdb
+H:\github\PoshSec\PoshSec.PowerShell.Commands\PoshSec.PowerShell.Commands\obj\Debug\PoshSec.PowerShell.Commands.csprojResolveAssemblyReference.cache

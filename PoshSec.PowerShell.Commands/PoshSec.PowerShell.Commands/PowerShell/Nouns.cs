@@ -13,5 +13,6 @@ namespace PoshSec.PowerShell
     internal static class Nouns
     {
         public const string PoshSecHello = "PoshSecHello";
+        public const string DateISO8601 = "DateISO8601";
     }
 }
