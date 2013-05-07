@@ -1,5 +1,7 @@
 ﻿function Get-LockedOutAccounts {
 
+    $list = @()
+
     $adsiSearcher = New-Object DirectoryServices.DirectorySearcher("LDAP://rootdse")
     $adsiSearcher.filter = "ObjectCategory=User"
     
