@@ -1,6 +1,11 @@
 ﻿ function Confirm-IsAdministrator {
+    param(
+        [Switch]$WriteMessage
+    )
     if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")){
-        Write-Warning "You do not have Administrator rights to run this script! Please re-run this script as an Administrator!"
-        Break
+        if ($WriteMessage){
+                Write-Host -ForegroundColor Yellow "You do not have Administrator rights to run this script! Please re-run this script as an Administrator!"
+        }
+        return $false
     }
 }
