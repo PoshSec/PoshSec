@@ -1,4 +1,4 @@
-﻿function Show-DisabledAccountAccess {
+﻿function Show-SecDisabledAccountAccess {
     [CmdletBinding()]
     param (
         [Parameter(Position=1, Mandatory=$false)]

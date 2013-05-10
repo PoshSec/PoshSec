@@ -1,4 +1,4 @@
-﻿function Get-AccountsThatExpire {
+﻿function Get-SecAccountsThatExpire {
     $list = @()
     $root = [ADSI]""            
     $search = [adsisearcher]$root            

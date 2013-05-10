@@ -1,4 +1,4 @@
-﻿function Get-LockedOutAccounts {
+﻿function Get-SecLockedOutAccounts {
 
     $list = @()
 

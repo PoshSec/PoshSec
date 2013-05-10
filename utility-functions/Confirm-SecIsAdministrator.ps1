@@ -1,4 +1,4 @@
-﻿ function Confirm-IsAdministrator {
+﻿ function Confirm-SecIsAdministrator {
     param(
         [Switch]$WriteMessage
     )

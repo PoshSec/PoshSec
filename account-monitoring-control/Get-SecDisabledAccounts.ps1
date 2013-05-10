@@ -1,4 +1,4 @@
-﻿function Get-DisabledAccounts {
+﻿function Get-SecDisabledAccounts {
 
     $list = @()
 
