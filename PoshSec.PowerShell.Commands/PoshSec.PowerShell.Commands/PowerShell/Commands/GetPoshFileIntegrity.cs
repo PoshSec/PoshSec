@@ -18,8 +18,8 @@ namespace PoshSec.PowerShell.Commands
     /// </summary>
     [System.Management.Automation.Cmdlet(
         System.Management.Automation.VerbsCommon.Get,
-        PoshSec.PowerShell.Nouns.PoshFileIntegrity)]
-    public class GetPoshFileIntegrity : System.Management.Automation.PSCmdlet
+        PoshSec.PowerShell.Nouns.SecFileIntegrity)]
+    public class GetSecFileIntegrity : System.Management.Automation.PSCmdlet
     {
         /// <summary>
         /// Provides a record-by-record processing functionality for the cmdlet.

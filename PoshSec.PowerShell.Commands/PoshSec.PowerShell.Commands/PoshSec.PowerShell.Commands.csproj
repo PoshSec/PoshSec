@@ -63,8 +63,8 @@
     <Folder Include="PowerShell\Automation\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\Get-InstalledSoftware.ps1" />
-    <None Include="Scripts\Get-SoftwareIntegrity.ps1" />
+    <None Include="Scripts\Get-SecSoftwareInstalled.ps1" />
+    <None Include="Scripts\Get-SecSoftwareIntegrity.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

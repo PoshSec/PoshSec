@@ -1,4 +1,4 @@
-﻿function Get-SoftwareIntegrity
+﻿function Get-SecSoftwareInstalled
 {
     <#
     .Synopsis
@@ -15,13 +15,13 @@
     #>
 	
 	[string]$computer = Get-Content env:ComputerName
-	[string]$filename = Get-DateISO8601 -Prefix ".\$computer-Integrity" -Suffix ".xml"
-	Get-PoshFileIntegrity | Export-Clixml -Path $filename
+	[string]$filename = Get-DateISO8601 -Prefix ".\$computer-Software" -Suffix ".xml"
+	Get-ItemProperty -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select DisplayName, DisplayVersion, Publisher, InstallDate, HelpLink, UninstallString | Export-Clixml -Path $filename
 	
-	[System.Array]$approved = Import-Clixml -Path ".\$computer-Integrity-Baseline.xml"
+	[System.Array]$approved = Import-Clixml -Path ".\$computer-Installed-Baseline.xml"
 	[System.Array]$installed = Import-Clixml -Path $filename
 	
-	[string]$filename = Get-DateISO8601 -Prefix ".\$computer-Integrity-Exception-Report" -Suffix ".xml"
+	[string]$filename = Get-DateISO8601 -Prefix ".\$computer-Installed-Exception-Report" -Suffix ".xml"
 	Compare-Object $approved $installed | Export-Clixml -Path $filename
 	
 	# The script can be emailed for review or processing in the ticketing system:
