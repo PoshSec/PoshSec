@@ -2,7 +2,7 @@
 
 
 
-function Get-OpenPort{
+function Get-SECOpenPort{
 
 <#
 .Synopsis
@@ -20,11 +20,11 @@ function Get-OpenPort{
 
 .EXAMPLE
   Create initial baseline for localhost
-  PS C:\> Get-OpenPort -baseline
+  PS C:\> Get-SECOpenPort -baseline
 
 .EXAMPLE
   Compare WEBSERV01 to the baseline
-  PS C:\> Get-OpenPort -computername WEBSERV01
+  PS C:\> Get-SECOpenPort -computername WEBSERV01
 
  .Link
         https://github.com/organizations/PoshSec
@@ -43,7 +43,7 @@ param(
     )
 
 
-    function Write-Baseline{
+    function Write-SECBaseline {
       if (-not ($computername[0] -eq 'localhost') -or $computername.Length -gt 1 ){
          $base = Invoke-Command -ComputerName $computername -ScriptBlock {
         
@@ -73,7 +73,7 @@ param(
        
     }
 
-    function Get-Baseline{
+    function Get-SECBaseline{
       try{
        $comp = Import-Csv -Path $csv -Header Computer, Port
       }
@@ -81,7 +81,7 @@ param(
         Write-Error "File not found at $csv"
         return;
       }
-       $comp
+       
       
        $ipgp = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties();
        $listens = $ipgp.GetActiveTcpListeners();
@@ -95,6 +95,7 @@ param(
          }
          
          }
+         Write-Host "Check complete."
       
          
        
@@ -102,10 +103,36 @@ param(
     
 
     if($baseline){
-    Write-Baseline
+      if(-not ($computername[0] -eq 'localhost') -or $computername.Length -gt 1 ){
+     
+	$choiceYes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes", "Answer Yes."
+	$choiceNo = New-Object System.Management.Automation.Host.ChoiceDescription "&No", "Answer No."
+	$options = [System.Management.Automation.Host.ChoiceDescription[]]($choiceYes, $choiceNo)
+	$result = $host.ui.PromptForChoice("confirm", "Remoting is experimental in this release, Do you want to continue?", $options, 1)
+		switch ($result)
+    	{
+			0 
+			{
+			Write-SECBaseline
+			}
+ 
+			1 
+			{
+			return;
+			}
+		}
+
+      
+      }
+    Write-SECBaseline
     }
+
     else{
-    Get-Baseline
+     if(-not ($computername[0] -eq 'localhost') -or $computername.Length -gt 1 ){
+     Write-Warning "Remote baseline checks are not yet implemented"
+     return;
+     }
+    Get-SECBaseline
     }
 
   }
