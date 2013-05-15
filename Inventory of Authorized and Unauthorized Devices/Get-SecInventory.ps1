@@ -1,21 +1,25 @@
 ﻿function Get-SecInventory {
 
-Add-CommentHelp -Description Get-SecInventory -Synopsis "Retrieves all computer accounts for a single domain"
+<#
+-Description Get-SecInventory -Synopsis "Retrieves all computer accounts for a single domain"
+#>
 
-$strCategory = "computer"
+$list=@()
+#an array was an easier way of both collecting results and outputting them
 
-$objDomain = New-Object System.DirectoryServices.DirectoryEntry("LDAP://rootdse")
+#the strCategory was unnecessary, since it was only called in one location. It was removed to avoid redunancy
 
-$objSearcher = New-Object System.DirectoryServices.DirectorySearcher
+$objDomain = New-Object System.DirectoryServices.DirectorySearcher("LDAP://rootdse")
+
 $objSearcher.SearchRoot = $objDomain
-$objSearcher.Filter = ("(objectCategory=$strCategory)")
 
-$colProplist = "name"
-foreach ($i in $colPropList){$objSearcher.PropertiesToLoad.Add($i)}
+$objSearcher.Filter = "objectCategory=computer"
 
-$colResults = $objSearcher.FindAll()
+$objSearcher.FindAll() | Foreach {
+    $list = $list + ([adsi]$_.path).DistinguishedName
+}
+#Again, it was easier to place the results in an array 
 
-foreach ($objResult in $colResults)
-    {$objComputer = $objResult.Properties; $objComputer.name}
+Write-Output $list
     
 }
