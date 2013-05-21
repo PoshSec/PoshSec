@@ -16,7 +16,7 @@
 	
 	[string]$computer = Get-Content env:ComputerName
 	[string]$filename = Get-DateISO8601 -Prefix ".\$computer-Integrity" -Suffix ".xml"
-	Get-PoshFileIntegrity | Export-Clixml -Path $filename
+	Get-SecFileIntegrity | Export-Clixml -Path $filename
 	
 	[System.Array]$approved = Import-Clixml -Path ".\$computer-Integrity-Baseline.xml"
 	[System.Array]$installed = Import-Clixml -Path $filename

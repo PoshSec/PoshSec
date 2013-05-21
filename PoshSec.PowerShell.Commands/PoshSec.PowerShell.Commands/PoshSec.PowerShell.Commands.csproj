@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PowerShell\Commands\GetDateISO8601.cs" />
-    <Compile Include="PowerShell\Commands\GetPoshFileIntegrity.cs" />
+    <Compile Include="PowerShell\Commands\GetSecFileIntegrity.cs" />
     <Compile Include="PowerShell\Commands\PoshSecHelloCommand.cs" />
     <Compile Include="PowerShell\Nouns.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
