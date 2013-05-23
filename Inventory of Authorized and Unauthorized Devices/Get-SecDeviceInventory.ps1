@@ -22,7 +22,7 @@ if(-NOT(Test-Path ".\Device-Inventory-Baseline.xml"))
 [System.Array]$authorized = Import-Clixml -Path ".\Device-Inventory-Baseline.xml"
 
 [string]$exception = Get-DateISO8601 -Prefix ".\Device-Exception-Report" -Suffix ".xml"
-Compare-Object $list $authorized | Export-Clixml ".\Exception-Reports\$exception"
+Compare-Object $list $authorized | Export-Clixml ".\$exception"
 
     # The script can be emailed for review or processing in the ticketing system:
 	# Send-MailMessage -To -Subject "Device Inventory Exception" -Body "The report is attached." -Attachments $exception
