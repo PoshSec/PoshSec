@@ -1,4 +1,3 @@
-
 function Get-SecSoftwareInstalled
 {
     <#
@@ -15,13 +14,6 @@ function Get-SecSoftwareInstalled
         https://github.com/organizations/PoshSec
     #>
 	
-
-    
- 
-
-    
-    
-
 
     [string]$computer = Get-Content env:ComputerName
 
