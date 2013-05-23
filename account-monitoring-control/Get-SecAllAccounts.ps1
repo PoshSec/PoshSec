@@ -1,7 +1,4 @@
 ﻿function Get-SecAllAccounts {
-    param (
-        [int]$days
-    )
     $list = @()
     $root = [ADSI]""            
     $search = [adsisearcher]$root            
@@ -12,4 +9,20 @@
     } 
 
     Write-Output $list
+
+    <#    
+    .SYNOPSIS
+        Gets list of all accounts.
+    .DESCRIPTION
+        Gets list of all accounts in the domain.
+    .EXAMPLE
+        PS> Get-SecAccountsThatExpire
+            CN=Matt Johnson,OU=IS,DC=PoshSec,DC=com
+            CN=Rich Cassara,OU=IS,DC=PoshSec,DC=com
+            ..
+    .LINK
+        www.poshsec.com
+    .NOTES
+        This function is a PoshSec module.
+    #>
 }
