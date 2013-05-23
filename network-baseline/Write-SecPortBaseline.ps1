@@ -9,6 +9,7 @@
        $listens = $ipgp.GetActiveTcpListeners();
        foreach($ip in $listens)
        {
+        
        $table += $computer, $ip.Port   
           
        }
