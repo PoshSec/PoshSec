@@ -1,4 +1,4 @@
-function Compare-SecOpenPort
+function Compare-SecOpenPorts
 {
 
    <#
