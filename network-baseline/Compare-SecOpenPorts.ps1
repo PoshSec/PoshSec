@@ -1,10 +1,21 @@
-function Compare-SecOpenPorts
+function Compare-SecOpenPort
 {
 
-    <#
-        Synopsis
-            Compare the baseline list created by Get-SECOpenPort and generate an exception report based on the differences between the lists
-
+   <#
+    .Synopsis
+    Compares the the current list to the baseline and exports that into an XML file
+    
+    .Description
+        Compares the open ports to the XML baseline and exports to an XML file.
+        
+        CSIS 20 Critical Security Controls for Effective Cyber Defense excerpt:
+    	Limitation and control of network ports, protocols and services
+   
+    .Example
+        Get-InstalledSoftware
+    
+    .Link
+        https://github.com/organizations/PoshSec
     #>
 
        
@@ -15,7 +26,7 @@ function Compare-SecOpenPorts
       [array]$open = Import-Clixml $filename
       [array]$baseline = Import-Clixml ".\$computer-Ports-Baseline.xml"
       [string]$report = Get-DateISO8601 -Prefix ".\$computer-Ports-Exception-Report" -Suffix ".xml"
-      Compare-Object $baseline $open | Export-Clixml .\$report   
+      Compare-Object $baseline $open | Export-Clixml .\Exception-Reports\$report   
 
 
 }
