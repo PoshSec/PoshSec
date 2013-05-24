@@ -10,9 +10,6 @@ function Compare-SecOpenPort
         
         CSIS 20 Critical Security Controls for Effective Cyber Defense excerpt:
     	Limitation and control of network ports, protocols and services
-   
-    .Example
-        Get-InstalledSoftware
     
     .Link
         https://github.com/organizations/PoshSec
