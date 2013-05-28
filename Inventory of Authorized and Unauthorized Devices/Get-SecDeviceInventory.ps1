@@ -1,8 +1,20 @@
 function Get-SecDeviceInventory 
 {
 
+
+<#
+    Synopsis
+    To generate a list of devices on the network and then export it to an XML document.
+
+
+
+    
+#>
+
 $list = @()
- 
+
+[string]$filename = Get-DateISO8601 -Prefix ".\Device-Inventory" -Suffix ".xml" 
+
 $objSearcher = New-Object DirectoryServices.DirectorySearcher("LDAP://rootdse")
 $objSearcher.SearchRoot = $objDomain
 $objSearcher.Filter = "objectCategory=computer"
@@ -10,22 +22,15 @@ $objSearcher.FindAll() | Foreach {
     $list += ([adsi]$_.path).DistinguishedName
 }
  
-#Write-Output $list
- 
+Write-Output $list | Export-Clixml $filename
+
 if(-NOT(Test-Path ".\Device-Inventory-Baseline.xml"))
-    {
-		Write-Output $list | Export-Clixml "Device-Inventory-Baseline.xml"
-		Write-Warning "Baseline list now created. Please re-run this script to check for unauthorized devices."
-	
+	{
+		Rename-Item $filename ".\Device-Inventory-Baseline.xml"
+		Write-Warning "Baseline list now created"
+	   	Invoke-Expression $MyInvocation.MyCommand
 	}
 
-[System.Array]$authorized = Import-Clixml -Path ".\Device-Inventory-Baseline.xml"
-
-[string]$exception = Get-DateISO8601 -Prefix ".\Device-Exception-Report" -Suffix ".xml"
-Compare-Object $list $authorized | Export-Clixml ".\$exception"
-
-    # The script can be emailed for review or processing in the ticketing system:
-	# Send-MailMessage -To -Subject "Device Inventory Exception" -Body "The report is attached." -Attachments $exception
 
 
 }
