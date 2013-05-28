@@ -3,12 +3,10 @@ function Get-SecDeviceInventory
 
 
 <#
+
     Synopsis
     To generate a list of devices on the network and then export it to an XML document.
-
-
-
-    
+   
 #>
 
 $list = @()
