@@ -6,8 +6,13 @@ function Set-SecFirewallSettings
                 
     #>
 
+
+
+
+
     Write-Warning "Establishing firewall configurations and logging."
     #Establish Firewall Rules
+    Set-NetFirewallProfile -All -AllowLocalFirewallRules False
     Set-NetFirewallProfile -All -LogAllowed True -LogBlocked True -NotifyOnListen True
     Set-NetFirewallProfile -All -LogMaxSizeKilobytes 10240
     Write-Warning "Firewall Logging now configured and enabled"
