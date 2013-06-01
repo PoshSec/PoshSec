@@ -7,7 +7,7 @@ The main PoshSec repository.
 
 Current Release Features
 ========
-This initial project release was based on SANS CSIS 20 Controls to assist an organization securing itself against digitial attacks. The purpose of this release is to "baseline" an environment given the stated controls in the CSIS.  The released focused on the following controls
+This initial project release was based on SANS CSIS 20 Controls to assist an organization securing itself against digital attacks. The purpose of this release is to "baseline" an environment given the stated controls in the CSIS.  The release is focused on the following controls:
 
 - Account Monitoring
 - Inventory of Authorized and Unauthorized Devices
@@ -16,12 +16,12 @@ This initial project release was based on SANS CSIS 20 Controls to assist an org
 
 Account Monitoring
 - accounts that do not expire
-- account that expire
+- accounts that expire
 - list all accounts
 - disabled accounts
 - locked out accounts
 - passwords over expired date
-- Disabled account access
+- disabled account access
 
 
 Inventory of Authorized and Unauthorized Devices
