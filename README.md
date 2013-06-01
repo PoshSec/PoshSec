@@ -45,11 +45,7 @@ This project started by Will Steele (@pen_test) and Matt Johnson (@mwjcomputing)
 - Be a location to obtain links to others using PowerShell in the information security space.
 
 Current Developers are:
-Matt Johnson - @mwjcomputing
-J Wolfgang Goerlich - @jwgoerlich
-Rich Cassara - @rjcassara
-Michael Ortega - @securitymoey
-Nick Jacob - @MortiousPrime 
+Matt Johnson - @mwjcomputing; J Wolfgang Goerlich - @jwgoerlich; Rich Cassara - @rjcassara; Michael Ortega - @securitymoey; Nick Jacob - @MortiousPrime 
 
 Contact
 ==========
