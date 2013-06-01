@@ -31,9 +31,5 @@ function Get-SecSoftwareInstalled
         Invoke-Expression $MyInvocation.MyCommand
 	    
     }
-	
-	
-  
-
 
 }

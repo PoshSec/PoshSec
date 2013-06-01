@@ -17,14 +17,13 @@ function Get-SecSoftwareIntegrity
 	[string]$computer = Get-Content env:ComputerName
 	[string]$filename = Get-DateISO8601 -Prefix ".\$computer-Integrity" -Suffix ".xml"
 	Get-SecFileIntegrity | Export-Clixml -Path $filename
-<<<<<<< HEAD
 	
 	[System.Array]$approved = Import-Clixml -Path ".\$computer-Integrity-Baseline.xml"
 	[System.Array]$installed = Import-Clixml -Path $filename
 	
 	[string]$filename = Get-DateISO8601 -Prefix ".\$computer-Integrity-Exception-Report" -Suffix ".xml"
 	Compare-Object $approved $installed | Export-Clixml -Path $filename
-=======
+
     
     if(-NOT(Test-Path ".\$computer-Integrity-Baseline.xml"))
     {
@@ -33,7 +32,5 @@ function Get-SecSoftwareIntegrity
         Invoke-Expression $MyInvocation.MyCommand
 	    
     }
-
->>>>>>> 09066c41e7cc4e5097a6cbb2cfc1d86b53ccc765
 	
 }

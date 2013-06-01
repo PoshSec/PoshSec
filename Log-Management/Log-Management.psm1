@@ -1,0 +1,1 @@
+﻿. (Join-Path $PSScriptRoot Get-SecDNSLogStatus.ps1)

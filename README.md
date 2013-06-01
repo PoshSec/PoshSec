@@ -34,8 +34,7 @@ Network Baseline
 
 License
 ========
-This is the place holder for license information
-
+BSD 3-Clause
 
 About
 ========
@@ -44,6 +43,13 @@ This project started by Will Steele (@pen_test) and Matt Johnson (@mwjcomputing)
 - Publish a PowerShell module to aid people in the use of PowerShell in regards to security.
 - Provide some guidance on how to use PowerShell in the information security space, on both the offensive and defensive side with blog posts and articles.
 - Be a location to obtain links to others using PowerShell in the information security space.
+
+Current Developers are:
+Matt Johnson - @mwjcomputing
+J Wolfgang Goerlich - @jwgoerlich
+Rich Cassara - @rjcassara
+Michael Ortega - @securitymoey
+Nick Jacob - @MortiousPrime 
 
 Contact
 ==========
