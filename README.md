@@ -7,7 +7,7 @@ The main PoshSec repository.
 
 Current Release Features
 ========
-This initial project release was based on SANS CSIS 20 Controls to assist an organization securing itself against digitial attacks. The purpose of this release is to "baseline" an environment given the stated controls in the CSIS.  The released focused on the following controls
+This initial project release was based on SANS CSIS 20 Controls to assist an organization securing itself against digital attacks. The purpose of this release is to "baseline" an environment given the stated controls in the CSIS.  The release is focused on the following controls:
 
 - Account Monitoring
 - Inventory of Authorized and Unauthorized Devices
@@ -16,12 +16,12 @@ This initial project release was based on SANS CSIS 20 Controls to assist an org
 
 Account Monitoring
 - accounts that do not expire
-- account that expire
+- accounts that expire
 - list all accounts
 - disabled accounts
 - locked out accounts
 - passwords over expired date
-- Disabled account access
+- disabled account access
 
 
 Inventory of Authorized and Unauthorized Devices
@@ -34,7 +34,8 @@ Network Baseline
 
 License
 ========
-BSD 3-Clause
+This is the place holder for license information
+
 
 About
 ========
@@ -43,9 +44,6 @@ This project started by Will Steele (@pen_test) and Matt Johnson (@mwjcomputing)
 - Publish a PowerShell module to aid people in the use of PowerShell in regards to security.
 - Provide some guidance on how to use PowerShell in the information security space, on both the offensive and defensive side with blog posts and articles.
 - Be a location to obtain links to others using PowerShell in the information security space.
-
-Current Developers are:
-Matt Johnson - @mwjcomputing; J Wolfgang Goerlich - @jwgoerlich; Rich Cassara - @rjcassara; Michael Ortega - @securitymoey; Nick Jacob - @MortiousPrime 
 
 Contact
 ==========
