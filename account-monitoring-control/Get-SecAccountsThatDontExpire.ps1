@@ -1,4 +1,5 @@
 ﻿function Get-SecAccountsThatDontExpire {
+﻿   <#
     $list = @()
     $root = [ADSI]""            
     $search = [adsisearcher]$root            
@@ -9,6 +10,7 @@
     } 
 
     Write-Output $list
+<<<<<<< HEAD
 
     <#    
     .SYNOPSIS
@@ -25,3 +27,18 @@
         This function is a PoshSec module.
     #>
 }
+=======
+    #>
+    
+    
+     
+    $filename = Get-DateISO8601 -Prefix "Never-Expire" -Suffix ".xml"
+    
+    Search-ADAccount -PasswordNeverExpires | Export-Clixml $filename
+    [System.Array]$current = Import-Clixml $filename
+    [System.Array]$approved = Import-Clixml ".\Never-Expire-Baseline.xml"
+
+    Compare-Object $approved $current | Export-Clixml "Never-Expire-Exception.xml"
+    
+}
+>>>>>>> 09066c41e7cc4e5097a6cbb2cfc1d86b53ccc765

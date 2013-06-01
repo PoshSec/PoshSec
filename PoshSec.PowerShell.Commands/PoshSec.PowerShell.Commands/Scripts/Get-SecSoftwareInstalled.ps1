@@ -1,4 +1,4 @@
-﻿function Get-SecSoftwareInstalled
+function Get-SecSoftwareInstalled
 {
     <#
     .Synopsis
@@ -14,16 +14,26 @@
         https://github.com/organizations/PoshSec
     #>
 	
-	[string]$computer = Get-Content env:ComputerName
-	[string]$filename = Get-DateISO8601 -Prefix ".\$computer-Software" -Suffix ".xml"
-	Get-ItemProperty -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select DisplayName, DisplayVersion, Publisher, InstallDate, HelpLink, UninstallString | Export-Clixml -Path $filename
+
+    [string]$computer = Get-Content env:ComputerName
+
+    [string]$filename = Get-DateISO8601 -Prefix ".\$computer-Software" -Suffix ".xml"
+    
+
+    Get-ItemProperty  HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* |Select @{name="ComputerName";expression={"$env:computername"}}, DisplayName, DisplayVersion, Publisher, InstallDate, HelpLink, UninstallString | Export-Clixml $filename
+
+   
+
+    if(-NOT(Test-Path ".\$computer-Installed-Baseline.xml"))
+    {
+	    Rename-Item $filename "$computer-Installed-Baseline.xml"
+   	    Write-Warning "The baseline file for this computer has been created, now running the script again."
+        Invoke-Expression $MyInvocation.MyCommand
+	    
+    }
 	
-	[System.Array]$approved = Import-Clixml -Path ".\$computer-Installed-Baseline.xml"
-	[System.Array]$installed = Import-Clixml -Path $filename
 	
-	[string]$filename = Get-DateISO8601 -Prefix ".\$computer-Installed-Exception-Report" -Suffix ".xml"
-	Compare-Object $approved $installed | Export-Clixml -Path $filename
-	
-	# The script can be emailed for review or processing in the ticketing system:
-	# Send-MailMessage -To -Subject "Installed software exception for $computer" -Body "The report is attached." -Attachments $filename
+  
+
+
 }
