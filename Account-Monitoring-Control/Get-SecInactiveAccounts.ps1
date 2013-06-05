@@ -13,6 +13,9 @@ function Get-SecInactiveAccounts
         Disable-ADAccount -Identity $n -Confirm
     }
     
-    #if Timespan > 30, then disable the account. At that point, another script should be run that will allow associated files to be encrypted.
+    <#
+    Designed to check for any accounts that have been active for 30 days.
+    For each account that has, will prompt the admin to confirm disabling
+    #>
    
 }
