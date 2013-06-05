@@ -28,6 +28,7 @@ function Start-SecBaseline
     Search-ADAccount -PasswordNeverExpires | Export-Clixml ".\Baselines\Never-Expires-Baseline.xml"
     Search-ADAccount -AccountExpired | Export-Clixml ".\Baselines\Expired-Baseline.xml"
     Search-ADAccount -AccountDisabled | Export-Clixml ".\Baselines\Disabled-Baseline.xml"
+    Search-ADAccount -LockedOut | Export-Clixml ".\Baselines\Locked-Baseline.xml"
 
     Get-SecDNSLogStatus
     Get-SecDeviceList
