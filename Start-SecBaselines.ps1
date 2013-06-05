@@ -6,7 +6,6 @@ function Start-SecBaseline
         Steps of Implementation:
             1. Check for proper directories (.\Exception-Reports)
             3. Run Scripts
-                -Order:
             4. Send current Exception-Reports to Admin
 
 
