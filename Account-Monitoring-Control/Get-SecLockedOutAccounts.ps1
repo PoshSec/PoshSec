@@ -1,18 +1,18 @@
 ﻿function Get-SecLockedOutAccounts {
-
-    $list = @()
-
-    $adsiSearcher = New-Object DirectoryServices.DirectorySearcher("LDAP://rootdse")
-    $adsiSearcher.filter = "ObjectCategory=User"
+ 
+    $filename = Get-DateISO8601 -Prefix "Locked-Out" -Suffix ".xml"
+    Search-ADAccount -LockedOut | Export-Clixml .\$filename
     
-    $adsiSearcher.findAll() | 
-    ForEach-Object {
-        If(([adsi]$_.path).psbase.invokeGet("IsAccountLocked")) {
-            $list = $list + ([adsi]$_.path).DistinguishedName
-        }
-    } 
+    [System.Array]$current = Import-Clixml $filename
+    [System.Array]$approved = Import-Clixml ".\Baselines\Locked-Baseline.xml"
 
-    Write-Output $list
+    Move-Item $filename .\Reports
+
+    $exception = Get-DateISO8601 -Prefix "Locked-Exception" -Suffix ".xml"
+
+    Compare-Object $approved $current | Export-Clixml ".\Exception-Reports\$exception"
+   
+    } 
 
     <#    
     .SYNOPSIS
