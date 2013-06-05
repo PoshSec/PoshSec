@@ -7,16 +7,6 @@ function Start-SecBaseline
             1. Check for proper directories (.\Exception-Reports)
             3. Run Scripts
                 -Order:
-                    Get-SecDNSLogStatus
-                    Get-SecDeviceList
-                    Get-SecSoftwareInstalled
-                    Compare-SecSoftwareInstalled
-                    Get-SecSoftwareIntegrity
-                    Compare-SecSoftwareIntegrity
-                    
-                    Get-SecAccountsThatDontExpire
-                    Get-SecAccountsthatExpire
-                    Get-SecAccounts
             4. Send current Exception-Reports to Admin
 
 
