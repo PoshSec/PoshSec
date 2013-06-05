@@ -14,8 +14,10 @@ function Get-SecAdminAccounts
     [System.Array]$approved = Import-Clixml ".\Baselines\Admin-Baseline.xml"
     
     Move-Item $filename .\Reports
+    
+    $exception = Get-DateISO8601 -Prefix "Admin-Exception" -Suffix ".xml"
 
-    Compare-Object $approved $current | Export-Clixml ".\Exception-Reports\Admin-Exceptions.xml"
+    Compare-Object $approved $current | Export-Clixml ".\Exception-Reports\$exception"
     
 
 }
