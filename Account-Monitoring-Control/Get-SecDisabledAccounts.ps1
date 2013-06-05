@@ -6,7 +6,9 @@
     [System.Array]$current = Import-Clixml $filename
     [System.Array]$approved = Import-Clixml ".\Baselines\Disabled-Baseline.xml"
 
-    Compare-Object $approved $current | Export-Clixml ".\Exception-Reports\Disabled-Exception.xml"
+    $exception = Get-DateISO8601 -Prefix "Disabled-Exceptions" -Suffix ".xml"
+
+    Compare-Object $approved $current | Export-Clixml ".\Exception-Reports\$exception"
 
     <#    
     .SYNOPSIS
