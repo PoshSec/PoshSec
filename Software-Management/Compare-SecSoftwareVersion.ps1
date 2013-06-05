@@ -18,9 +18,7 @@ function Compare-SecSoftwareVersion
     [string]$filename = Get-DateISO8601 -Prefix ".\$computer-Software" -Suffix ".xml"
 
     [System.Array]$approved = Import-Clixml -Path ".\Baselines\$computer-Installed-Baseline.xml"
-    [System.Array]$installed = Import-Clixml -Path $filename 
-
-    Move-Item $filename .\Reports
+    [System.Array]$installed = Import-Clixml -Path ".\Reports\$filename" 
 
     [string]$filename = Get-DateISO8601 -Prefix ".\$computer-Version-Exception-Report" -Suffix ".xml"
     Compare-Object $approved $installed -Property DisplayVersion | select DisplayName,DisplayVersion | Export-Clixml  ".\Exception-Reports\$filename"
