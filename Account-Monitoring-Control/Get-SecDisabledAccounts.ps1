@@ -5,6 +5,8 @@
     Search-ADAccount -AccountDisabled | Export-Clixml $filename
     [System.Array]$current = Import-Clixml $filename
     [System.Array]$approved = Import-Clixml ".\Baselines\Disabled-Baseline.xml"
+    
+    Move-Item $filename .\Reports
 
     $exception = Get-DateISO8601 -Prefix "Disabled-Exceptions" -Suffix ".xml"
 
