@@ -12,6 +12,10 @@ function Find-SecAccountNameChecker
         }
 
     }
+    #Search for names associated with processes
+    #Output that list
+    
+    
     <#
     Creates a list of accounts that could be linked to any special privileges or processes.
     #>
