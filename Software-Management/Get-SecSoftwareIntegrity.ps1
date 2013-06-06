@@ -30,5 +30,9 @@ function Get-SecSoftwareIntegrity
             Invoke-Expression $MyInvocation.MyCommand
 	    
     }
+    else
+    {
+        Compare-SecSoftwareIntegrity
+    }
 	
 }
