@@ -35,12 +35,8 @@ function Start-SecBaseline
     Get-SecSoftwareInstalled 
     Get-SecSoftwareIntegrity
     Get-SecOpenPort
-    Compare-SecDeviceList
-    Compare-SecSoftwareInstalled
-    Compare-SecSoftwareVersion
-    Compare-SecSoftwareIntegrity
-    Compare-SecOpenPort
     Set-SecFirewallSettings
     Set-SecLogSettings
+    Get-SecFiles
     
 }
