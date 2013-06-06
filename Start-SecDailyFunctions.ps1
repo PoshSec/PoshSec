@@ -16,11 +16,7 @@
     Get-SecAdminAccounts
     Get-SecLockedOutAccounts
     Get-SecDisabledAccounts
-    Compare-SecDeviceList
-    Compare-SecSoftwareInstalled
-    Compare-SecSoftwareVersion
-    Compare-SecSoftwareIntegrity
-    Compare-SecOpenPort
+    Get-SecFiles
 
 
 }
