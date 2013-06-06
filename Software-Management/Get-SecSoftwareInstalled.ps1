@@ -32,5 +32,11 @@ function Get-SecSoftwareInstalled
         Invoke-Expression $MyInvocation.MyCommand
 	    
     }
+    else
+    {
+        Compare-SecSoftwareInstalled
+        Compare-SecSoftwareVersion
+
+    }
 
 }
