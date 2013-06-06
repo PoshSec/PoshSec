@@ -38,6 +38,10 @@
             Write-Warning  "The baseline file for this computer has been created, now running the script again."
             Invoke-Expression $MyInvocation.MyCommand
         }
+        else
+        {
+            Compare-SecOpenPort
+        }
 
        
          
