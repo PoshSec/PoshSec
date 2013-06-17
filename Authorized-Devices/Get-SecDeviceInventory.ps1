@@ -28,6 +28,10 @@ if(-NOT(Test-Path ".\Device-Inventory-Baseline.xml"))
 		Write-Warning "Baseline list now created"
 	   	Invoke-Expression $MyInvocation.MyCommand
 	}
+else
+    {
+        Compare-SecDeviceList
+    }
 
 
 
