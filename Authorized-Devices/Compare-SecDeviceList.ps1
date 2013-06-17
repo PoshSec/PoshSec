@@ -10,6 +10,8 @@ function Compare-SecDeviceList
 
     [System.Array]$approved = Import-Clixml -Path ".\Device-Inventory-Baseline.xml"
     [System.Array]$installed = Import-Clixml -Path $filename
+    
+    Move-Item $filename .\Reports
 
     [String]$filename = Get-DateISO8601 -Prefix ".\Device-Inventory-Exception-Report" -Suffix ".xml"
     Compare-Object $approved $installed | Export-Clixml  ".\Exception-Reports\$filename"

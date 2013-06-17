@@ -24,12 +24,19 @@ function Get-SecSoftwareInstalled
 
    
 
-    if(-NOT(Test-Path ".\$computer-Installed-Baseline.xml"))
+    if(-NOT(Test-Path ".\Baselines\$computer-Installed-Baseline.xml"))
     {
 	    Rename-Item $filename "$computer-Installed-Baseline.xml"
-   	    Write-Warning "The baseline file for this computer has been created, now running the script again."
+	    Move-Item ".\$computer-Installed-Baseline.xml" .\Baselines
+	    Write-Warning "The baseline file for this computer has been created, now running the script again."
         Invoke-Expression $MyInvocation.MyCommand
 	    
+    }
+    else
+    {
+        Compare-SecSoftwareInstalled
+        Compare-SecSoftwareVersion
+
     }
 
 }

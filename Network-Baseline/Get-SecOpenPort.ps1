@@ -31,11 +31,16 @@
 
        Write-Output $table | Export-Clixml -Path $filename
        
-       if(-NOT(Test-Path ".\$computer-Ports-Baseline.xml"))
+       if(-NOT(Test-Path ".\Baselines\$computer-Ports-Baseline.xml"))
        {
             Rename-Item $filename "$computer-Ports-Baseline.xml"
+            Move-Item "$computer-Ports-Baseline.xml" .\Baselines
             Write-Warning  "The baseline file for this computer has been created, now running the script again."
             Invoke-Expression $MyInvocation.MyCommand
+        }
+        else
+        {
+            Compare-SecOpenPort
         }
 
        

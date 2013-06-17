@@ -1,14 +1,16 @@
 ﻿function Get-SecAccountsThatExpire {
-    $list = @()
-    $root = [ADSI]""            
-    $search = [adsisearcher]$root            
-    $search.Filter = "(&(objectclass=user)(objectcategory=user)(!accountExpires=9223372036854775807))"             
-    $search.SizeLimit = 3000            
-    $search.FindAll() | foreach {            
-        $list = $list + ([adsi]$_.path).DistinguishedName
-    } 
+    
+    $filename = Get-DateISO8601 -Prefix "Expired" -Suffix ".xml"
+    Search-ADAccount -AccountExpired | Export-Clixml .\$filename
+    
+    [System.Array]$current = Import-Clixml $filename
+    [System.Array]$approved = Import-Clixml ".\Baselines\Expired-Baseline.xml"
 
-    Write-Output $list
+    Move-Item $filename .\Reports
+
+    $exception = Get-DateISO8601 -Prefix "Expired-Exception" -Suffix ".xml"
+
+    Compare-Object $approved $current | Export-Clixml ".\Exception-Reports\$exception"
 
     <#    
     .SYNOPSIS
