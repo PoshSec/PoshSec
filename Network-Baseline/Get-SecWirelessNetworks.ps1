@@ -33,7 +33,7 @@ function Get-SecWAPs
         Compare-Object $approved $installed -Property | Export-Clixml  ".\Exception-Reports\$filename"
 
         # The script can be emailed for review or processing in the ticketing system:
-        # Send-MailMessage -To -Subject "Installed software exception for $computer" -Body "The report is attached." -Attachments $filename
+        # Send-MailMessage -To -Subject "Wireless access point exception for $computer" -Body "The report is attached." -Attachments $filename
     }
 
     
