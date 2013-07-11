@@ -12,7 +12,6 @@
 
     Compare-Object $approved $current | Export-Clixml ".\Exception-Reports\$exception"
    
-    } 
 
     <#    
     .SYNOPSIS
