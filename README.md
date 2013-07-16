@@ -55,6 +55,6 @@ Current Developers are:
 
 Contact
 ==========
-www.poshsec.com
-You can offer your support by emailing team[at]poshsec[dot]com
-twitter: @poshsec
+* www.poshsec.com
+* You can offer your support by emailing team@poshsec.com
+* Twitter: @poshsec
