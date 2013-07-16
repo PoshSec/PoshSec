@@ -12,6 +12,7 @@
     Get-SecSoftwareInstalled 
     Get-SecSoftwareIntegrity
     Get-SecOpenPort
+    Get-SecWAPs
     Get-SecExpiredAccounts
     Get-SecAdminAccounts
     Get-SecLockedOutAccounts
