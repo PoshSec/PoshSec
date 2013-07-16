@@ -4,6 +4,7 @@ PoshSec
 =======
 The main PoshSec repository.
 
+For a simple how to get started with PoshSec, please visit https://github.com/PoshSec/PoshSec/wiki/Getting-Started-with-PoshSec.
 
 Current Release Features
 ========
