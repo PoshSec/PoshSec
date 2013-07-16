@@ -35,6 +35,7 @@ function Start-SecBaseline
     Get-SecSoftwareInstalled 
     Get-SecSoftwareIntegrity
     Get-SecOpenPort
+    Get-SecWAPs
     Set-SecFirewallSettings
     Set-SecLogSettings
     Get-SecFiles
