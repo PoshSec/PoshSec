@@ -21,7 +21,9 @@
                 $list | Add-Member -MemberType NoteProperty -Name 'Name' -Value $(([adsi]$_.path).DistinguishedName)
                 $list | Add-Member -MemberType NoteProperty -Name 'Age' -Value $age
             }
-            $export += $list
+            if ($list.Name -ne $null) {
+                $export += $list
+            }
         } 
     }
 
