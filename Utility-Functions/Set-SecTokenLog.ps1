@@ -46,9 +46,3 @@
         Write-EventLog -LogName TokenWatcher -Source Token -Message "The file '$name' was $changeType at $timeStamp" -EventId 103 -EntryType Information
         } 
  
-    Register-ObjectEvent $fsw Renamed -SourceIdentifier FileRenamed -Action{ 
-        $name = $Event.SourceEventArgs.Name 
-        $changeType = $Event.SourceEventArgs.ChangeType 
-        $timeStamp = $Event.TimeGenerated 
-        Write-EventLog -LogName TokenWatcher -Source "C:\Scripts\HoneyToken" -Message "The file '$name' was $changeType at $timeStamp" -EventId 104 -EntryType Information
-        }
