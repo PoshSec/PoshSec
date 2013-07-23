@@ -25,8 +25,8 @@ function Compare-SecOpenPorts
       
       Move-Item $filename .\Reports
       
-      [string]$report = Get-DateISO8601 -Prefix ".\$computer-Ports-Exception-Report" -Suffix ".xml"
-      Compare-Object $baseline $open | Export-Clixml ".\Exception-Reports\$report"   
+      [string]$exception = Get-DateISO8601 -Prefix ".\$computer-Ports-Exception-Report" -Suffix ".xml"
+      Compare-Object -ReferenceObject $baseline -DifferenceObject $open -CaseSensitive | Export-Clixml  ".\Exception-Reports\$exception"   
 
 
 }
