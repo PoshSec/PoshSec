@@ -10,7 +10,7 @@
 
     $exception = Get-DateISO8601 -Prefix "Never-Expire-Exception" -Suffix ".xml"
 
-    Compare-Object $approved $current | Export-Clixml ".\Exception-Reports\$exception"
+    Compare-Object -ReferenceObject $approved -DifferenceObject $current -CaseSensitive | Export-Clixml  ".\Exception-Reports\$exception"
 
     <#    
     .SYNOPSIS
