@@ -22,7 +22,7 @@ function Get-SecDeviceInventory
 	    }
     else
         {
-            Compare-SecDeviceList
+            Compare-SecDeviceInventory
         }
         
 }
