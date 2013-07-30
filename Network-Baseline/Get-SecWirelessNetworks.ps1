@@ -11,8 +11,10 @@ function Get-SecWAPs
     {
         Rename-Item $filename "$computer-WAP-Baseline.xml"
         Move-Item ".\$computer-WAP-Baseline.xml" .\Baselines
-   	    Write-Warning "The baseline file for this computer has been created, running this script again."
-        Invoke-Expression $MyInvocation.MyCommand
+        if(Test-Path ".\Baselines\$computer-WAP-Baseline.xml"){
+   		Write-Warning "The baseline file for this computer has been created, running this script again."
+        	Invoke-Expression $MyInvocation.MyCommand
+        }
 	    
     }
 
