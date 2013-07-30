@@ -1,6 +1,7 @@
 function Get-SecDeviceInventory 
 {
 
+
      <#
 
         Synopsis
@@ -10,15 +11,34 @@ function Get-SecDeviceInventory
    
     #>
 
+    $list = @()
+
     [string]$filename = Get-DateISO8601 -Prefix ".\Device-Inventory" -Suffix ".xml"
-    Get-ADComputer -Filter * | Select-Object DistinguishedName,DNSHostName,Name,SAMAccountName,ObjectGUID | Export-Clixml $filename
- 
+    $listMaker = Get-ADComputer -Filter *
+
+    foreach($name in $listMaker){
+        $comps = Get-ADComputer -Identity $name
+      
+        $objects = New-Object PSObject 
+        $objects | Add-Member -MemberType NoteProperty -Name "Name" -Value $($comps | Select-Object -ExpandProperty Name)
+        $objects | Add-Member -MemberType NoteProperty -Name "DistinguishedName" -Value $($comps | Select-Object -ExpandProperty DistinguishedName)
+        $objects | Add-Member -MemberType NoteProperty -Name "DNSHostName" -Value $($comps | Select-Object -ExpandProperty DNSHostName)
+        $objects | Add-Member -MemberType NoteProperty -Name "SAMAccountName" -Value $($comps | Select-Object -ExpandProperty SAMAccountName)
+        $objects | Add-Member -MemberType NoteProperty -Name "ObjGUID" -Value $($comps | Select-Object -ExpandProperty ObjectGUID)
+       
+        $list += $objects
+    
+    }
+    Export-Clixml -InputObject $list -Path $filename
+    
     if(-NOT(Test-Path ".\Baselines\Device-Inventory-Baseline.xml"))
 	    {
 		    Rename-Item $filename "Device-Inventory-Baseline.xml"
             Move-Item ".\Device-Inventory-Baseline.xml" .\Baselines
-		    Write-Warning "Baseline list now created"
-	   	    Invoke-Expression $MyInvocation.MyCommand
+            if(Test-Path ".\Baselines\Device-Inventory-Baseline.xml"){
+		        Write-Warning "Baseline list now created"
+	   	        Invoke-Expression $MyInvocation.MyCommand
+            }
 	    }
     else
         {
@@ -26,4 +46,3 @@ function Get-SecDeviceInventory
         }
         
 }
-
