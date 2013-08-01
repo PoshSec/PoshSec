@@ -1,9 +1,8 @@
     <#
-        Checks to see if the eventlog is there
-        If not, creates the eventlog and writes to it
-        If so, continues with settings.
-
-        T
+        Creates an event log to monitor specified folders.
+        Can be configured with additional events (such as interacting with ticketing system)
+        Designed to be set as a scheduled task, written as:
+        powershell -noexit [Path-to-Script]Set-SecTokenLog.ps1
 
     #>
 
