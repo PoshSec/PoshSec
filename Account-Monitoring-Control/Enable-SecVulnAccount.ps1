@@ -9,36 +9,16 @@ https://github.com/NJJacob/PoshSec/tree/0.1.5-Release/Account-Monitoring-Control
     
     Future Additions:
     Ability to choose account 
-    Automate the entirety of function during vuln scan, upon completion, demotes and disables account.
-    
-  
+      
     #>
 
-    $assessor = "Assessor Account"
-
-    $message = "Do you want to Enable or Disable the assessor account?"
-
-    $enable = New-Object System.Management.Automation.Host.ChoiceDescription "&Enable",`
-        "Enables the assessor account."
-
-    $disable = New-Object System.Management.Automation.Host.ChoiceDescription "&Disable",`
-        "Disables the assessor account."
-
-    $option = [System.Management.Automation.Host.ChoiceDescription[]]($enable,$disable)
-
-    $result = $Host.UI.PromptForChoice($assessor,$message,$option, 0)
-
-    Switch ($result)
-    {
-        0 {
-        Enable-ADAccount "assessor" 
-        Add-ADGroupMember "domain admins" "assessor"
-        }
-        1 {
-        Remove-ADGroupMember  "domain admins"  "assessor"
-        Disable-ADAccount "assessor" 
-        }
-    }
-   
-   
+    $account = Read-Host 'What is the SAM Account Name of the account that will be used?'
+    $group = Read-Host 'What group is the account being added to?'
+    Enable-ADAccount $account 
+    Add-ADGroupMember $group $account
+    Start-Sleep -Seconds 21600
+    
+    Remove-ADGroupMember -Identity $group -Members $account -Confirm:$false
+    Disable-ADAccount $account 
+  
 }
