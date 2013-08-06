@@ -61,7 +61,7 @@
             $properties += $props
             } 
         }
-    Export-Clixml - $filename
+    Export-Clixml $filename
     if(-NOT(Test-Path ".\Baselines\$computer-Ports-Baseline.xml"))
     {
         Rename-Item $filename "$computer-Ports-Baseline.xml"
