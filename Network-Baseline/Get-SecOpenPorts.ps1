@@ -59,21 +59,23 @@
             $props | Add-Member -MemberType NoteProperty -Name "PID" -Value $item[-1] 
              
             $properties += $props
-            } 
+            }
+           
         }
-    Export-Clixml $filename
+        Export-Clixml -InputObject $properties -Path $filename
     if(-NOT(Test-Path ".\Baselines\$computer-Ports-Baseline.xml"))
     {
         Rename-Item $filename "$computer-Ports-Baseline.xml"
         Move-Item "$computer-Ports-Baseline.xml" .\Baselines
-        Write-Warning  "The baseline file for this computer has been created, now running the script again."
-        Invoke-Expression $MyInvocation.MyCommand
+        if(Test-Path ".\Baselines\$computer-Ports-Baseline.xml"){
+            Write-Warning  "The baseline file for this computer has been created, now running the script again."
+            Invoke-Expression $MyInvocation.MyCommand
+        }
     }
     else
     {
         Compare-SecOpenPorts
     }
 } 
-
 
 
