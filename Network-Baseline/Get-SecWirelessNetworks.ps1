@@ -17,8 +17,7 @@ function Get-SecWAPs
         }
 	    
     }
-
-	else
+    else
     {
         Compare-SecWAPs
     }
