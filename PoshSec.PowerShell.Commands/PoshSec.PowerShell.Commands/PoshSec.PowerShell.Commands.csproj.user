@@ -5,4 +5,7 @@
     <StartProgram>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</StartProgram>
     <StartArguments>-noexit -command Import-Module .\PoshSec.PowerShell.Commands.dll%3b Get-Command | Where-Object { %24_.ModuleName -eq %27PoshSec.PowerShell.Commands%27 }</StartArguments>
   </PropertyGroup>
+  <PropertyGroup>
+    <ProjectView>ShowAllFiles</ProjectView>
+  </PropertyGroup>
 </Project>
