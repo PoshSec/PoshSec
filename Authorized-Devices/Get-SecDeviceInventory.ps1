@@ -36,7 +36,7 @@ function Get-SecDeviceInventory
 		    Rename-Item $filename "Device-Inventory-Baseline.xml"
             Move-Item ".\Device-Inventory-Baseline.xml" .\Baselines
             if(Test-Path ".\Baselines\Device-Inventory-Baseline.xml"){
-		        Write-Warning "Baseline list now created"
+		        Write-Warning "Device Inventory Baseline list now created"
 	   	        Invoke-Expression $MyInvocation.MyCommand
             }
 	    }
