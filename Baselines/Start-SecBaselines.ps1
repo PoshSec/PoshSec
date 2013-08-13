@@ -1,5 +1,6 @@
-function Start-SecBaseline
+function Start-SecBaselines
 {
+     
     <#
         Concept: Creates the baseline files for comparison later. Must be run as an administrator, then disable administrator priveleges.
         
@@ -10,7 +11,8 @@ function Start-SecBaseline
 
 
      #>
-
+    
+        
     if(-NOT(Test-Path ".\Exception-Reports"))
         {
             New-Item .\Exception-Reports -type directory
@@ -30,14 +32,39 @@ function Start-SecBaseline
     Search-ADAccount -AccountDisabled | Export-Clixml ".\Baselines\Disabled-Baseline.xml"
     Search-ADAccount -LockedOut | Export-Clixml ".\Baselines\Locked-Baseline.xml"
 
-    Get-SecDNSLogStatus
-    Get-SecDeviceList
-    Get-SecSoftwareInstalled 
-    Get-SecSoftwareIntegrity
-    Get-SecOpenPort
-    Get-SecWAPs
-    Set-SecFirewallSettings
-    Set-SecLogSettings
-    Get-SecFiles
+    $DomainRole = (Get-WmiObject Win32_ComputerSystem).DomainRole  
+        $IsDC = $False  
+        if ($DomainRole -gt 3) {  
+            $IsDC = $True  
+                           
+        } 
+             
+      
+        #If not a DC, run specific scripts  
+        if ($IsDC -ne $true) {  
+        
+        Get-SecSoftwareInstalled 
+        Get-SecSoftwareIntegrity
+        Get-SecOpenPorts
+        Set-SecFirewallSettings
+        Set-SecLogSettings
+        Get-SecDrivers
+        Get-SecWAPs
+        Get-SecFiles
+  
+             
+        } 
+        else {  
+              
+        
+        Get-SecDeviceInventory
+        Get-SecSoftwareInstalled 
+        Get-SecSoftwareIntegrity
+        Get-SecOpenPorts
+        Set-SecFirewallSettings
+        Set-SecLogSettings
+        Get-SecDrivers
+        Get-SecFiles  
+        }
     
 }
