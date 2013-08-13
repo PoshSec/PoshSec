@@ -26,12 +26,7 @@ function Start-SecBaselines
             New-Item .\Reports -type directory
         }
     
-    Get-ADGroupMember -Identity administrators | Export-Clixml ".\Baselines\Admin-Baseline.xml"
-    Search-ADAccount -PasswordNeverExpires | Export-Clixml ".\Baselines\Never-Expires-Baseline.xml"
-    Search-ADAccount -AccountExpired | Export-Clixml ".\Baselines\Expired-Baseline.xml"
-    Search-ADAccount -AccountDisabled | Export-Clixml ".\Baselines\Disabled-Baseline.xml"
-    Search-ADAccount -LockedOut | Export-Clixml ".\Baselines\Locked-Baseline.xml"
-
+    
     $DomainRole = (Get-WmiObject Win32_ComputerSystem).DomainRole  
         $IsDC = $False  
         if ($DomainRole -gt 3) {  
@@ -56,7 +51,11 @@ function Start-SecBaselines
         } 
         else {  
               
-        
+        Get-ADGroupMember -Identity administrators | Export-Clixml ".\Baselines\Admin-Baseline.xml"
+        Search-ADAccount -PasswordNeverExpires | Export-Clixml ".\Baselines\Never-Expires-Baseline.xml"
+        Search-ADAccount -AccountExpired | Export-Clixml ".\Baselines\Expired-Baseline.xml"
+        Search-ADAccount -AccountDisabled | Export-Clixml ".\Baselines\Disabled-Baseline.xml"
+        Search-ADAccount -LockedOut | Export-Clixml ".\Baselines\Locked-Baseline.xml"
         Get-SecDeviceInventory
         Get-SecSoftwareInstalled 
         Get-SecSoftwareIntegrity
