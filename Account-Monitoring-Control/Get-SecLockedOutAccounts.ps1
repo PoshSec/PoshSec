@@ -2,6 +2,16 @@
  
     $filename = Get-DateISO8601 -Prefix "Locked-Out" -Suffix ".xml"
     Search-ADAccount -LockedOut | Export-Clixml .\$filename
+    if(-NOT(Test-Path ".\Baselines\Locked-Baseline.xml"))
+    {
+	    Rename-Item $filename "Locked-Baseline.xml"
+	    Move-Item ".\Locked-Baseline.xml" .\Baselines
+        if(Test-Path ".\Baselines\Locked-Baseline.xml"){
+   	        Write-Warning "The locked account baseline has been created, running the script again."
+            Invoke-Expression $MyInvocation.MyCommand
+        }
+	    
+    }
     
     [System.Array]$current = Import-Clixml $filename
     [System.Array]$approved = Import-Clixml ".\Baselines\Locked-Baseline.xml"
