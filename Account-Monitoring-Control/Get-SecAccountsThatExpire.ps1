@@ -3,6 +3,17 @@
     $filename = Get-DateISO8601 -Prefix "Expired" -Suffix ".xml"
     Search-ADAccount -AccountExpired | Export-Clixml .\$filename
     
+    if(-NOT(Test-Path ".\Baselines\Expired-Baseline.xml"))
+    {
+	    Rename-Item $filename "Expired-Baseline.xml"
+	    Move-Item ".\Expired-Baseline.xml" .\Baselines
+        if(Test-Path ".\Baselines\Expired-Baseline.xml"){
+   	        Write-Warning "The expired account baseline has been created, running the script again."
+            Invoke-Expression $MyInvocation.MyCommand
+        }
+	    
+    }
+   
     [System.Array]$current = Import-Clixml $filename
     [System.Array]$approved = Import-Clixml ".\Baselines\Expired-Baseline.xml"
 
