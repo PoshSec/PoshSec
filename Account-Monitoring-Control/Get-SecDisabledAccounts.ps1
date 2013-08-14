@@ -3,6 +3,16 @@
     $filename = Get-DateISO8601 -Prefix "Disabled-Accounts" -Suffix ".xml"
     
     Search-ADAccount -AccountDisabled | Export-Clixml $filename
+    if(-NOT(Test-Path ".\Baselines\Disabled-Baseline.xml"))
+    {
+	    Rename-Item $filename "Disabled-Baseline.xml"
+	    Move-Item ".\Disabled-Baseline.xml" .\Baselines
+        if(Test-Path ".\Baselines\Disabled-Baseline.xml"){
+   	        Write-Warning "The disabled account baseline has been created, running the script again."
+            Invoke-Expression $MyInvocation.MyCommand
+        }
+	    
+    }
     [System.Array]$current = Import-Clixml $filename
     [System.Array]$approved = Import-Clixml ".\Baselines\Disabled-Baseline.xml"
     
