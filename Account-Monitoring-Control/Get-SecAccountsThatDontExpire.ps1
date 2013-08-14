@@ -3,6 +3,20 @@
     $filename = Get-DateISO8601 -Prefix "Never-Expire" -Suffix ".xml"
     
     Search-ADAccount -PasswordNeverExpires | Export-Clixml $filename
+    if(-NOT(Test-Path ".\Baselines\Never-Expire-Baseline.xml"))
+    {
+	    Rename-Item $filename "Never-Expire-Baseline.xml"
+	    Move-Item ".\Never-Expires-Baseline.xml" .\Baselines
+        if(Test-Path ".\Baselines\Never-Expire-Baseline.xml"){
+   	        Write-Warning "The never expiring baseline has been created, running the script again."
+            Invoke-Expression $MyInvocation.MyCommand
+        }
+	    
+    }
+    else
+    {
+        Compare-SecSoftwareIntegrity
+    }
     [System.Array]$current = Import-Clixml $filename
     [System.Array]$approved = Import-Clixml ".\Baselines\Never-Expire-Baseline.xml"
     
