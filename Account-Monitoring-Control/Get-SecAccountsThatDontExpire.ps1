@@ -13,10 +13,7 @@
         }
 	    
     }
-    else
-    {
-        Compare-SecSoftwareIntegrity
-    }
+   
     [System.Array]$current = Import-Clixml $filename
     [System.Array]$approved = Import-Clixml ".\Baselines\Never-Expire-Baseline.xml"
     
