@@ -1,6 +1,6 @@
 function Enable-Assessor
 {
-https://github.com/NJJacob/PoshSec/tree/0.1.5-Release/Account-Monitoring-Control/Enable-VulnAccount
+
     <#
     Enables an assessor account to be used with a vulnerability scanner.
     If enable is chosen, it enables the account and escalates its privileges
