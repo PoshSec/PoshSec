@@ -41,7 +41,7 @@
             $props | Add-Member -MemberType NoteProperty -Name "RemotePort" -Value $remotePort
             $props | Add-Member -MemberType NoteProperty -Name "State" -Value $(if($item[0] -eq 'tcp') {$item[3]} else {$null})
             $props | Add-Member -MemberType NoteProperty -Name "ProccessName" -Value $((Get-Process -Id $item[-1] -ErrorAction SilentlyContinue).Name)
-            $props | Add-Member -MemberType NoteProperty -Name "PID" -Value $item[-1] 
+            #$props | Add-Member -MemberType NoteProperty -Name "PID" -Value $item[-1] 
              
             $properties += $props
             }
