@@ -1,4 +1,4 @@
-function Compare-SecDeviceList
+function Compare-SecDeviceInventory
 {
 <#
     Synopsis
@@ -13,8 +13,8 @@ function Compare-SecDeviceList
     
     Move-Item $filename .\Reports
 
-    [String]$filename = Get-DateISO8601 -Prefix ".\Device-Inventory-Exception-Report" -Suffix ".xml"
-    Compare-Object $approved $installed | Export-Clixml  ".\Exception-Reports\$filename"
+    [String]$exception = Get-DateISO8601 -Prefix ".\Device-Inventory-Exception-Report" -Suffix ".xml"
+    Compare-Object -ReferenceObject $approved -DifferenceObject $installed -CaseSensitive | Export-Clixml  ".\Exception-Reports\$exception"
 
     # The script can be emailed for review or processing in the ticketing system:
     # Send-MailMessage -To -Subject "Installed software exception for $computer" -Body "The report is attached." -Attachments $filename

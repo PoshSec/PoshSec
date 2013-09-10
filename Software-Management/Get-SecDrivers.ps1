@@ -5,9 +5,7 @@ function Get-SecDrivers
     $filename = Get-DateISO8601 -Prefix ".\$computer-Drivers" -Suffix ".xml"
    
    
-    Get-WmiObject win32_systemdriver | Select-Object 
-    
-    Export-Clixml -InputObject $driver -Path  $filename
+    Get-WindowsDriver -Online -All | Export-Clixml $filename
 
      if(-NOT(Test-Path ".\Baselines\$computer-Drivers-Baseline.xml"))
        {
