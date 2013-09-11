@@ -17,17 +17,15 @@ function Get-SecSoftwareIntegrity
 	[string]$computer = Get-Content env:ComputerName
 	[string]$filename = Get-DateISO8601 -Prefix ".\$computer-Integrity" -Suffix ".xml"
 	Get-SecFileIntegrity | Export-Clixml -Path $filename
-	
-	[System.Array]$approved = Import-Clixml -Path ".\$computer-Integrity-Baseline.xml"
-	[System.Array]$installed = Import-Clixml -Path $filename
-	
-	    
+		    
     if(-NOT(Test-Path ".\Baselines\$computer-Integrity-Baseline.xml"))
     {
 	    Rename-Item $filename "$computer-Integrity-Baseline.xml"
 	    Move-Item ".\$computer-Integrity-Baseline.xml" .\Baselines
-   	    Write-Warning "The baseline file for this computer has been created, please run this script again."
+        if(Test-Path ".\Baselines\$computer-Integrity-Baseline.xml"){
+   	        Write-Warning "The integrity baseline has been created for this computer, running the script again."
             Invoke-Expression $MyInvocation.MyCommand
+        }
 	    
     }
     else
