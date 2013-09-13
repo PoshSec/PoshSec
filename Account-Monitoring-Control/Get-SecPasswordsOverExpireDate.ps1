@@ -3,21 +3,33 @@
         [Parameter(Mandatory=$true)]
         [int]$days
     )
-    $list = @()
-    $root = [ADSI]""            
-    $search = [adsisearcher]$root            
-    $search.Filter = "(&(objectclass=user)(objectcategory=user))"             
-    $search.SizeLimit = 3000            
-    $search.FindAll() | foreach {
-        $pwdset = [datetime]::fromfiletime($_.properties.item("pwdLastSet")[0])
-        $age = (New-TimeSpan $pwdset).Days
 
-        if ($age -gt $days) {
-            $list = $list + ([adsi]$_.path).DistinguishedName
-        }
-    } 
+    begin {
+        $export = @()
+        $root = [ADSI]""            
+        $search = [adsisearcher]$root            
+        $search.Filter = "(&(objectclass=user)(objectcategory=user))"             
+        $search.SizeLimit = 3000            
+    }
 
-    Write-Output $list
+    process {
+        $search.FindAll() | foreach {
+            $list = New-Object -TypeName PSObject
+            $pwdset = [datetime]::fromfiletime($_.properties.item("pwdLastSet")[0])
+            $age = (New-TimeSpan $pwdset).Days
+            if ($age -gt $days) {
+                $list | Add-Member -MemberType NoteProperty -Name 'Name' -Value $(([adsi]$_.path).DistinguishedName)
+                $list | Add-Member -MemberType NoteProperty -Name 'Age' -Value $age
+            }
+            if ($list.Name -ne $null) {
+                $export += $list
+            }
+        } 
+    }
+
+    end {
+        Write-Output $export
+    }
 
     <#    
     .SYNOPSIS
