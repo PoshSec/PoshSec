@@ -8,3 +8,4 @@
 . (Join-Path $PSScriptRoot Find-SecAccountNameChecker.ps1)
 . (Join-Path $PSScriptRoot Get-SecInactiveAccounts.ps1)
 . (Join-Path $PSScriptRoot Get-SecAdminAccounts.ps1)
+. (Join-Path $PSScriptRoot Enable-SecVulnAccount.ps1)

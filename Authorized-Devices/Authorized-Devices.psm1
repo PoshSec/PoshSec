@@ -1,3 +1,3 @@
-﻿. (Join-Path $PSScriptRoot Compare-SecDeviceList.ps1)
+﻿. (Join-Path $PSScriptRoot Compare-SecDeviceInventory.ps1)
 . (Join-Path $PSScriptRoot Get-SecDeviceInventory.ps1)
-. (Join-Path $PSScriptRoot Get-SecInventory.ps1)
+. (Join-Path $PSScriptRoot Get-SecConnectivity.ps1)
