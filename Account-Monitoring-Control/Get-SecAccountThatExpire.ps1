@@ -1,4 +1,4 @@
-﻿function Get-SecAccountsThatExpire {
+﻿function Get-SecAccountThatExpire {
     
     $filename = Get-DateISO8601 -Prefix "Expired" -Suffix ".xml"
     Search-ADAccount -AccountExpired | Export-Clixml .\$filename
@@ -29,7 +29,7 @@
     .DESCRIPTION
         Gets list of accounts from the domain that are set to expire.
     .EXAMPLE
-        PS> Get-SecAccountsThatExpire
+        PS> Get-SecAccountThatExpire
             CN=Matt Johnson,OU=IS,DC=PoshSec,DC=com
             CN=Rich Cassara,OU=IS,DC=PoshSec,DC=com
     .LINK

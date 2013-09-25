@@ -1,4 +1,4 @@
-function Compare-SecFiles
+function Compare-SecFile
  {
    
   

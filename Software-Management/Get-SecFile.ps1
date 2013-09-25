@@ -3,7 +3,7 @@
     Calls itself recursively and allows it to search through all directories
 #>
 
-function Get-SecFiles
+function Get-SecFile
 {
  
 
@@ -26,7 +26,7 @@ function Get-SecFiles
 
     else
     {
-        Compare-SecFiles
+        Compare-SecFile
     }
       
 

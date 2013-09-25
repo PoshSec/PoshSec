@@ -1,4 +1,4 @@
-function Get-SecWAPs
+function Get-SecWirelessNetwork
 {
 
     $computer = Get-Content Env:\COMPUTERNAME
@@ -19,7 +19,7 @@ function Get-SecWAPs
     }
     else
     {
-        Compare-SecWAPs
+        Compare-SecWirelessNetwork
     }
 
     

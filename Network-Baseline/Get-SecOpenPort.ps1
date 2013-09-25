@@ -1,4 +1,4 @@
- function Get-SecOpenPorts 
+ function Get-SecOpenPort
 { 
     [string]$computer = Get-Content env:ComputerName
     [string]$filename = Get-DateISO8601 -Prefix ".\$computer-Ports" -Suffix ".xml"
@@ -59,7 +59,7 @@
     }
     else
     {
-        Compare-SecOpenPorts
+        Compare-SecOpenPort
     }
 } 
 

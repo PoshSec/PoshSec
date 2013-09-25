@@ -1,4 +1,4 @@
-function Get-SecAdminAccounts
+function Get-SecAdminAccount
 {
     
     <#

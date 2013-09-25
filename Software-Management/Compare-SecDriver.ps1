@@ -1,4 +1,4 @@
-function Compare-SecDrivers
+function Compare-SecDriver
  {
    
   

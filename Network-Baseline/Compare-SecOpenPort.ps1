@@ -3,7 +3,7 @@ function Compare-SecOpenPort
 
    <#
     .Synopsis
-    Compares a reference object from Get-SecOpenPorts to a difference object from Get-SecOpenPorts
+    Compares a reference object from Get-SecOpenPort to a difference object from Get-SecOpenPorts
     
     .Description
         Custom compare function that will compare a reference object to a difference object.

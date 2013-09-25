@@ -1,4 +1,4 @@
-function Get-SecInactiveAccounts
+function Get-SecInactiveAccount
 {
 
 
