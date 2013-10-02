@@ -1,4 +1,4 @@
-function Start-SecBaselines
+function Start-SecBaseline
 {
      
     <#
@@ -40,12 +40,12 @@ function Start-SecBaselines
         
         Get-SecSoftwareInstalled 
         Get-SecSoftwareIntegrity
-        Get-SecOpenPorts
+        Get-SecOpenPort
         Set-SecFirewallSettings
         Set-SecLogSettings
-        Get-SecDrivers
-        Get-SecWAPs
-        Get-SecFiles
+        Get-SecDriver
+        Get-SecWAP
+        Get-SecFile
   
              
         } 
@@ -59,11 +59,11 @@ function Start-SecBaselines
         Get-SecDeviceInventory
         Get-SecSoftwareInstalled 
         Get-SecSoftwareIntegrity
-        Get-SecOpenPorts
+        Get-SecOpenPort
         Set-SecFirewallSettings
         Set-SecLogSettings
-        Get-SecDrivers
-        Get-SecFiles  
+        Get-SecDriver
+        Get-SecFile 
         }
     
 }

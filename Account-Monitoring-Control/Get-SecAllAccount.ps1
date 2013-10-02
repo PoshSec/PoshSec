@@ -1,4 +1,4 @@
-﻿function Get-SecAllAccounts {
+﻿function Get-SecAllAccount {
     $list = @()
     $root = [ADSI]""            
     $search = [adsisearcher]$root            
@@ -16,7 +16,7 @@
     .DESCRIPTION
         Gets list of all accounts in the domain.
     .EXAMPLE
-        PS> Get-SecAccountsThatExpire
+        PS> Get-SecAllAccount
             CN=Matt Johnson,OU=IS,DC=PoshSec,DC=com
             CN=Rich Cassara,OU=IS,DC=PoshSec,DC=com
             ..

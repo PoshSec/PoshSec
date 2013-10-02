@@ -1,4 +1,4 @@
-function Compare-SecWAPs
+function Compare-SecWirelessNetwork
  {
    
   

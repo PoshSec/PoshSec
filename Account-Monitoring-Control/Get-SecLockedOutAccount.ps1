@@ -1,4 +1,4 @@
-﻿function Get-SecLockedOutAccounts {
+﻿function Get-SecLockedOutAccount {
  
     $filename = Get-DateISO8601 -Prefix "Locked-Out" -Suffix ".xml"
     Search-ADAccount -LockedOut | Export-Clixml .\$filename
@@ -29,7 +29,7 @@
     .DESCRIPTION
         This function gets the current users in the domain who are locked out.
     .EXAMPLE
-        PS> Get-SecLockedOutAccounts
+        PS> Get-SecLockedOutAccount
             CN=Matt Johnson,OU=IS,DC=PoshSec,DC=com
             CN=Rich Cassara,OU=IS,DC=PoshSec,DC=com
     .LINK

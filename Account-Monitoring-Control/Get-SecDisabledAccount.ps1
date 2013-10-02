@@ -1,4 +1,4 @@
-﻿function Get-SecDisabledAccounts {
+﻿function Get-SecDisabledAccount {
 
     $filename = Get-DateISO8601 -Prefix "Disabled-Accounts" -Suffix ".xml"
     
@@ -28,7 +28,7 @@
     .DESCRIPTION
         Gets list of disabled in the domain.
     .EXAMPLE
-        PS> Get-SecAccountsThatExpire
+        PS> Get-SecDisabledAccount
             CN=Matt Johnson,OU=IS,DC=PoshSec,DC=com
             CN=Rich Cassara,OU=IS,DC=PoshSec,DC=com
             ..

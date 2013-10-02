@@ -1,4 +1,4 @@
-function Get-SecWAPs
+function Get-SecWAP
 {
 
     <#

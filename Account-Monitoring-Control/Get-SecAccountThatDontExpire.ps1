@@ -1,4 +1,4 @@
-﻿function Get-SecAccountsThatDontExpire {
+﻿function Get-SecAccountThatDontExpire {
 ﻿
     $filename = Get-DateISO8601 -Prefix "Never-Expire" -Suffix ".xml"
     
@@ -29,7 +29,7 @@
     .DESCRIPTION
         Gets a list of the accounts from the active directory domain that don't expire.
     .EXAMPLE
-        PS> Get-SecAccountsThatDontExpire
+        PS> Get-SecAccountThatDontExpire
             CN=Matt Johnson,OU=IS,DC=PoshSec,DC=com
             CN=Rich Cassara,OU=IS,DC=PoshSec,DC=com
     .LINK

@@ -1,4 +1,4 @@
-function Get-SecDrivers
+function Get-SecDriver
 {
 
     $computer = Get-Content env:ComputerName
@@ -17,7 +17,7 @@ function Get-SecDrivers
 
        else
     {
-        Compare-SecDrivers
+        Compare-SecDriver
     }
 
 }

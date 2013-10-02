@@ -1,4 +1,4 @@
-function Get-SecInactiveAccounts
+function Get-SecInactiveAccount
 {
 
 
@@ -14,7 +14,7 @@ function Get-SecInactiveAccounts
     }
     
     <#
-    Designed to check for any accounts that have been active for 30 days.
+    Designed to check for any accounts that have been inactive for 30 days.
     For each account that has, will prompt the admin to confirm disabling
     #>
    
