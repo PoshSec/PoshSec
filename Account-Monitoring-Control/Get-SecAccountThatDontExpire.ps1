@@ -1,27 +1,33 @@
 ﻿function Get-SecAccountThatDontExpire {
-﻿
-    $filename = Get-DateISO8601 -Prefix "Never-Expire" -Suffix ".xml"
-    
-    Search-ADAccount -PasswordNeverExpires | Export-Clixml $filename
-    if(-NOT(Test-Path ".\Baselines\Never-Expire-Baseline.xml"))
-    {
-	    Rename-Item $filename "Never-Expire-Baseline.xml"
-	    Move-Item ".\Never-Expires-Baseline.xml" .\Baselines
-        if(Test-Path ".\Baselines\Never-Expire-Baseline.xml"){
-   	        Write-Warning "The never expiring baseline has been created, running the script again."
-            Invoke-Expression $MyInvocation.MyCommand
-        }
-	    
+    [CmdletBinding()]
+    param(
+        [switch]$CreateBaseline
+    )
+
+     if (Get-Module -Name "ActiveDirectory" -ErrorAction SilentlyContinue) {
+        Write-Verbose -Message "Using Active Directory Cmdlets"
+        $list = Search-ADAccount -PasswordNeverExpires
+    } else {
+
+        $list = @()
+        $root = [ADSI]""
+        $search = [adsisearcher]$root
+        $search.Filter = "(&(objectclass=user)(objectcategory=user)(accountExpires=9223372036854775807))"
+        $search.SizeLimit = 3000
+        $search.FindAll() | foreach {
+            $list = $list + ([adsi]$_.path).DistinguishedName
+        } 
     }
-   
-    [System.Array]$current = Import-Clixml $filename
-    [System.Array]$approved = Import-Clixml ".\Baselines\Never-Expire-Baseline.xml"
+
+     if ($CreateBaseline) {
+        $filename = Get-DateISO8601 -Prefix "Never-Expire" -Suffix ".xml"
+        Write-Verbose -Message "Creating baseline. Filename is $filename"
+        $list | Export-Clixml $filename
+    } else {
+        $list
+    }
+﻿
     
-    Move-Item $filename .\Reports
-
-    $exception = Get-DateISO8601 -Prefix "Never-Expire-Exception" -Suffix ".xml"
-
-    Compare-Object -ReferenceObject $approved -DifferenceObject $current -CaseSensitive | Export-Clixml  ".\Exception-Reports\$exception"
 
     <#    
     .SYNOPSIS
