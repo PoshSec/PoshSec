@@ -1,27 +1,31 @@
 ﻿function Get-SecAccountThatExpire {
-    
-    $filename = Get-DateISO8601 -Prefix "Expired" -Suffix ".xml"
-    Search-ADAccount -AccountExpired | Export-Clixml .\$filename
-    
-    if(-NOT(Test-Path ".\Baselines\Expired-Baseline.xml"))
-    {
-	    Rename-Item $filename "Expired-Baseline.xml"
-	    Move-Item ".\Expired-Baseline.xml" .\Baselines
-        if(Test-Path ".\Baselines\Expired-Baseline.xml"){
-   	        Write-Warning "The expired account baseline has been created, running the script again."
-            Invoke-Expression $MyInvocation.MyCommand
+    [CmdletBinding()]
+    param(
+        [switch]$CreateBaseline
+    )
+
+     if (Get-Module -Name "ActiveDirectory" -ErrorAction SilentlyContinue) {
+        Write-Verbose -Message "Using Active Directory Cmdlets"
+        $list = Search-ADAccount -AccountExpired
+    } else {
+
+        $list = @()
+        $root = [ADSI]""
+        $search = [adsisearcher]$root
+        $search.Filter = "(&(objectclass=user)(objectcategory=user)(!accountExpires=9223372036854775807))"
+        $search.SizeLimit = 3000
+        $search.FindAll() | foreach {
+            $list = $list + ([adsi]$_.path).DistinguishedName
         }
-	    
     }
-   
-    [System.Array]$current = Import-Clixml $filename
-    [System.Array]$approved = Import-Clixml ".\Baselines\Expired-Baseline.xml"
 
-    Move-Item $filename .\Reports
-
-    $exception = Get-DateISO8601 -Prefix "Expired-Exception" -Suffix ".xml"
-
-    Compare-Object -ReferenceObject $approved -DifferenceObject $current -CaseSensitive | Export-Clixml  ".\Exception-Reports\$exception"
+     if ($CreateBaseline) {
+        $filename = Get-DateISO8601 -Prefix "Expire" -Suffix ".xml"
+        Write-Verbose -Message "Creating baseline. Filename is $filename"
+        $list | Export-Clixml $filename
+    } else {
+        $list
+    }
 
     <#    
     .SYNOPSIS

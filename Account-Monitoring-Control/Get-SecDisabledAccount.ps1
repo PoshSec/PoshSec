@@ -1,27 +1,37 @@
 ﻿function Get-SecDisabledAccount {
+    [CmdletBinding()]
+    param(
+        [switch]$CreateBaseline
+    )
 
-    $filename = Get-DateISO8601 -Prefix "Disabled-Accounts" -Suffix ".xml"
-    
-    Search-ADAccount -AccountDisabled | Export-Clixml $filename
-    if(-NOT(Test-Path ".\Baselines\Disabled-Baseline.xml"))
-    {
-	    Rename-Item $filename "Disabled-Baseline.xml"
-	    Move-Item ".\Disabled-Baseline.xml" .\Baselines
-        if(Test-Path ".\Baselines\Disabled-Baseline.xml"){
-   	        Write-Warning "The disabled account baseline has been created, running the script again."
-            Invoke-Expression $MyInvocation.MyCommand
+     if (Get-Module -Name "ActiveDirectory" -ErrorAction SilentlyContinue) {
+        Write-Verbose -Message "Using Active Directory Cmdlets"
+        $list = Search-ADAccount -AccountDisabled
+    } else {
+
+        $list = @()
+
+        $adsiSearcher = New-Object DirectoryServices.DirectorySearcher("LDAP://rootdse")
+        $adsiSearcher.filter = "(&(objectClass=user)(objectCategory=person))"
+        
+        $adsiSearcher.findAll() |
+        ForEach-Object {
+            $disabled = ([adsi]$_.path).psbase.invokeGet("useraccountcontrol")
+            if ($disabled -band 0x2) {
+                $list = $list + ([adsi]$_.path).DistinguishedName
+            }
         }
-	    
     }
-    [System.Array]$current = Import-Clixml $filename
-    [System.Array]$approved = Import-Clixml ".\Baselines\Disabled-Baseline.xml"
+
+     if ($CreateBaseline) {
+        $filename = Get-DateISO8601 -Prefix "Disabled-Accounts" -Suffix ".xml"
+        Write-Verbose -Message "Creating baseline. Filename is $filename"
+        $list | Export-Clixml $filename
+    } else {
+        $list
+    }
+
     
-    Move-Item $filename .\Reports
-
-    $exception = Get-DateISO8601 -Prefix "Disabled-Exceptions" -Suffix ".xml"
-
-    Compare-Object -ReferenceObject $approved -DifferenceObject $current -CaseSensitive | Export-Clixml  ".\Exception-Reports\$exception"
-
     <#    
     .SYNOPSIS
         Gets list of disabled accounts.
