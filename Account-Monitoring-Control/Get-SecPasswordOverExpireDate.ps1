@@ -28,7 +28,7 @@
     }
 
     end {
-        Write-Output $export
+        $export
     }
 
     <#    

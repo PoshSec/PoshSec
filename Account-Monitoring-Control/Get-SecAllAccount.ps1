@@ -1,14 +1,33 @@
 ﻿function Get-SecAllAccount {
-    $list = @()
-    $root = [ADSI]""            
-    $search = [adsisearcher]$root            
-    $search.Filter = "(&(objectclass=user)(objectcategory=user))"             
-    $search.SizeLimit = 3000            
-    $search.FindAll() | foreach {
-        $list = $list + ([adsi]$_.path).DistinguishedName
-    } 
 
-    Write-Output $list
+    [CmdletBinding()]
+    param(
+        [switch]$CreateBaseline
+    )
+
+     if (Get-Module -Name "ActiveDirectory" -ErrorAction SilentlyContinue) {
+        Write-Verbose -Message "Using Active Directory Cmdlets"
+        $list = Get-ADUser
+    } else {
+
+        $list = @()
+        $root = [ADSI]""            
+        $search = [adsisearcher]$root            
+        $search.Filter = "(&(objectclass=user)(objectcategory=user))"             
+        $search.SizeLimit = 3000            
+        $search.FindAll() | foreach {
+           $list = $list + ([adsi]$_.path).DistinguishedName
+        } 
+    }
+
+     if ($CreateBaseline) {
+        $filename = Get-DateISO8601 -Prefix "All-Accounts" -Suffix ".xml"
+        Write-Verbose -Message "Creating baseline. Filename is $filename"
+        $list | Export-Clixml $filename
+    } else {
+        $list
+    }
+
 
     <#    
     .SYNOPSIS

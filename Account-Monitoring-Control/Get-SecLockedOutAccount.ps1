@@ -1,26 +1,36 @@
 ﻿function Get-SecLockedOutAccount {
- 
-    $filename = Get-DateISO8601 -Prefix "Locked-Out" -Suffix ".xml"
-    Search-ADAccount -LockedOut | Export-Clixml .\$filename
-    if(-NOT(Test-Path ".\Baselines\Locked-Baseline.xml"))
-    {
-	    Rename-Item $filename "Locked-Baseline.xml"
-	    Move-Item ".\Locked-Baseline.xml" .\Baselines
-        if(Test-Path ".\Baselines\Locked-Baseline.xml"){
-   	        Write-Warning "The locked account baseline has been created, running the script again."
-            Invoke-Expression $MyInvocation.MyCommand
-        }
-	    
-    }
+    [CmdletBinding()]
+    param(
+        [switch]$CreateBaseline
+    )
+
+     if (Get-Module -Name "ActiveDirectory" -ErrorAction SilentlyContinue) {
+        Write-Verbose -Message "Using Active Directory Cmdlets"
+        $list = Search-ADAccount -LockedOut
+    } else {
+
+        $list = @()
+
+        $adsiSearcher = New-Object DirectoryServices.DirectorySearcher("LDAP://rootdse")
+        $adsiSearcher.filter = "ObjectCategory=User"
     
-    [System.Array]$current = Import-Clixml $filename
-    [System.Array]$approved = Import-Clixml ".\Baselines\Locked-Baseline.xml"
+        $adsiSearcher.findAll() |
+        ForEach-Object {
+          If(([adsi]$_.path).psbase.invokeGet("IsAccountLocked")) {
+              $list = $list + ([adsi]$_.path).DistinguishedName
+          }
+        } 
+    }
 
-    Move-Item $filename .\Reports
-
-    $exception = Get-DateISO8601 -Prefix "Locked-Exception" -Suffix ".xml"
-
-    Compare-Object $approved $current | Export-Clixml ".\Exception-Reports\$exception"
+     if ($CreateBaseline) {
+        $filename = Get-DateISO8601 -Prefix "Never-Expire" -Suffix ".xml"
+        Write-Verbose -Message "Creating baseline. Filename is $filename"
+        $list | Export-Clixml $filename
+    } else {
+        $list
+    }
+ 
+   
    
 
     <#    
