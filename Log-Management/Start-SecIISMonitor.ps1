@@ -19,8 +19,8 @@
   Integer indicating number of seconds to elapse between chacks on the log.  Default is 10.
   
 .EXAMPLE
-  To show visits from 127.0.0.1 in the last 1000 records from the current day's log:
-  Get-SecIISLog -limit 1000 | Where-Object ($_.cIP -eq "127.0.0.1"}
+  Get an alert if anyone tries to view your robots.txt file.
+   Start-SecIISMonitor -filter "robots.txt"
 
 #>
 Import-Module $PSframework;
