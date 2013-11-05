@@ -21,13 +21,13 @@ AUTHOR
   Will not wait for the process to exit before returning.
   
 .EXAMPLE
-  PS> $output = Execute-RemoteWmiProcess -computer REMOTEPC -command "C:\Windows6.1-KB2506143-x64.msu /quiet /norestart" -noredirect
+  PS> $output = Invoke-RemoteWmiProcess -computer REMOTEPC -command "C:\Windows6.1-KB2506143-x64.msu /quiet /norestart" -noredirect
   
 .EXAMPLE
-  PS> $output = Execute-RemoteWmiProcess REMOTEPC "C:\Windows6.1-KB2506143-x64.msu /quiet /norestart" -noredirect -nowait
+  PS> $output = Invoke-RemoteWmiProcess REMOTEPC "C:\Windows6.1-KB2506143-x64.msu /quiet /norestart" -noredirect -nowait
   
 .EXAMPLE
-  PS> $output = Execute-RemoteWmiProcess REMOTEPC "netstat -on"
+  PS> $output = Invoke-RemoteWmiProcess REMOTEPC "netstat -on"
 
 .LINK
    www.poshsec.com
@@ -35,7 +35,7 @@ AUTHOR
   This function is a utility function for the PoshSec module.
 #>
 
-function Execute-RemoteWmiProcess{
+function Invoke-RemoteWmiProcess{
   Param(
     [Parameter(Mandatory=$true,Position=1)]
     [string]$computer,

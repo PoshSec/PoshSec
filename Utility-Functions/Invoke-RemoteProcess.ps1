@@ -1,4 +1,26 @@
-<#    
+function Invoke-RemoteProcess{
+  Param(
+    [Parameter(Mandatory=$true,Position=1)]
+    [string]$computer,
+    
+    [Parameter(Mandatory=$true,Position=2)]
+    [string]$command,
+    
+    [Parameter(Mandatory=$false,Position=3)]
+    [string]$arguments
+  )
+  
+  $process = Get-RemoteProcess $computer
+  
+  if($process) {
+    if($arguments) {
+      $command = $command + " " + '"' + $arguments + '"'
+    }
+    
+    return $process.Create($command)
+  }
+
+  <#    
 .SYNOPSIS
   Executes a process on a remote system.
 .DESCRIPTION
@@ -21,36 +43,14 @@ AUTHOR
   The command arguments.
   
 .EXAMPLE
-  PS> $output = Execute-RemoteProcess -computer REMOTEPC -command "C:\Windows6.1-KB2506143-x64.msu" -arguments "/quiet /norestart"
+  PS> $output = Invoke-RemoteProcess -computer REMOTEPC -command "C:\Windows6.1-KB2506143-x64.msu" -arguments "/quiet /norestart"
   
 .EXAMPLE
-  PS> $output = Execute-RemoteProcess REMOTEPC "C:\Windows6.1-KB2506143-x64.msu" "/quiet /norestart"
+  PS> $output = Invoke-RemoteProcess REMOTEPC "C:\Windows6.1-KB2506143-x64.msu" "/quiet /norestart"
 
 .LINK
    www.poshsec.com
 .NOTES
   This function is a utility function for the PoshSec module.
 #>
-
-function Execute-RemoteProcess{
-  Param(
-    [Parameter(Mandatory=$true,Position=1)]
-    [string]$computer,
-    
-    [Parameter(Mandatory=$true,Position=2)]
-    [string]$command,
-    
-    [Parameter(Mandatory=$false,Position=3)]
-    [string]$arguments
-  )
-  
-  $process = Get-RemoteProcess $computer
-  
-  if($process) {
-    if($arguments) {
-      $command = $command + " " + '"' + $arguments + '"'
-    }
-    
-    return $process.Create($command)
-  }
 }
