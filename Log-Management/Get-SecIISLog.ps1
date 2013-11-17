@@ -29,7 +29,7 @@ $path = "C:\inetpub\logs\LogFiles\W3SVC1\",
 )
 
 
-$logform = "u_ex" + (Get-date $date -Format yyMMdd) + ".log"
+$logform = "u_ex" + (Get-date $date.ToUniversalTime() + ".log"
 
 $logs = @()
 
