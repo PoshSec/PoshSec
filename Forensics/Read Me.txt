@@ -1,0 +1,18 @@
+Forensic Module Notes
+
+Need to configure using Set-ForensicsConfig
+dest=directory to put results
+tools = tools directory
+
+Tool List
+
+Script Operating Related
+	robocopy.exe:        Included in the Windows 2003 resource tool kit and located at http://www.microsoft.com/download/en/details.aspx?id=17657
+		
+Offline Data
+	rawcopy.exe 			http://code.google.com/p/mft2csv/downloads/list (ensure you have both RawCopy64.exe and RawCopy.exe)
+	
+Forensic Imaging Memory Related
+	winpmem acquisition tool  Located at http://code.google.com/p/volatility/downloads/list **rename binary to winpmem.exe ***
+
+dd.exe
