@@ -19,7 +19,10 @@
    
   $properties = @()
   
-  $netstat | Select-String -Pattern '\s+(TCP)' | ForEach-Object {
+  $lines = $netstat | Select-String -Pattern '\s+(TCP)'
+  $lines += $netstat | Select-String -Pattern '\s+(UDP)'
+  
+  $lines | ForEach-Object {
    
     $item = $_.line.split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)
      
