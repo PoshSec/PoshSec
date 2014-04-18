@@ -18,19 +18,19 @@ foreach ($f in Get-ChildItem $rootpath)
 	}
 }
 
-<#
-		.SYNOPSIS
+	<#
+	.SYNOPSIS
         Verifies that DNS log files exist that can then be used for inventory purposes
 	
-		.EXAMPLE
-		PS C:\> Get-SecDNSLogStatus
+	.EXAMPLE
+	PS C:\> Get-SecDNSLogStatus
         "DNS Logging Enabled"
 
-		.LINK
-			www.poshsec.com
+	.LINK
+	www.poshsec.com
 	
-		.LINK
-			github.com/poshsec
+	.LINK
+	github.com/poshsec
 	
 	#> 
 
