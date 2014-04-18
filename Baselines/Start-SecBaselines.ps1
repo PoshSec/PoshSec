@@ -1,15 +1,5 @@
 function Start-SecBaseline
 {
-    <#
-        Concept: Creates the baseline files for comparison later. Must be run as an administrator, then disable administrator priveleges.
-        
-        Steps of Implementation:
-            1. Check for proper directories (.\Exception-Reports)
-            3. Run Scripts
-            4. Send current Exception-Reports to Admin
-
-
-     #>
 
     if(-NOT(Test-Path ".\Exception-Reports"))
         {
@@ -39,4 +29,27 @@ function Start-SecBaseline
     Set-SecLogSettings
     Get-SecFiles
     
+
+     <#
+		.SYNOPSIS
+        Centralized script to create the baseline files for comparison later. Must be run as an administrator, then disable administrator priveleges.
+	
+		.DESCRIPTION
+        Steps of Implementation:
+            1. Check for proper directories (.\Exception-Reports)
+            2. Creates directories if they are missing
+            3. Run Scripts
+            4. Send current Exception-Reports to Admin
+	
+		.EXAMPLE
+			PS C:\> Start-SecBaselines
+
+		.LINK
+			www.poshsec.com
+	
+		.LINK
+			github.com/poshsec
+	
+	#> 
+
 }
