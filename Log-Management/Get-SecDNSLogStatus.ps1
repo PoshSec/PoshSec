@@ -1,6 +1,5 @@
-﻿function Get-SecDNSLogStatus {
-
-Add-CommentHelp -Description GET-SecDNSLogStatus -Synopsis "Get-SecDNSLogStatus verifies that DNS log files exist that can then be used for inventory purposes."
+function Get-SecDNSLogStatus 
+{
 
 $rootpath = "systemroot\System32\Dns\" 
 
@@ -18,4 +17,21 @@ foreach ($f in Get-ChildItem $rootpath)
 		}
 	}
 }
+
+	<#
+	.SYNOPSIS
+        Verifies that DNS log files exist that can then be used for inventory purposes
+	
+	.EXAMPLE
+	PS C:\> Get-SecDNSLogStatus
+        "DNS Logging Enabled"
+
+	.LINK
+	www.poshsec.com
+	
+	.LINK
+	github.com/poshsec
+	
+	#> 
+
 }

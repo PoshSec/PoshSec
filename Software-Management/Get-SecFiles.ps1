@@ -1,8 +1,3 @@
-<#
-    Designed to search through the files and find any .dlls or .exes and then construct a list of those resources.
-    Calls itself recursively and allows it to search through all directories
-#>
-
 function Get-SecFiles
 {
  
@@ -28,6 +23,26 @@ function Get-SecFiles
     {
         Compare-SecFiles
     }
-      
+     
+     	<#
+	.SYNOPSIS
+        Finds all executables and .dlls and constructs a list of those resources
+	
+	.DESCRIPTION
+	Designed to search through the files and find any .dlls or .exes and then construct a list of those resources.
+        Calls itself recursively and allows it to search through all directories
+        Then calls Compare function to provide exception report
+
+	.EXAMPLE
+	PS C:\> Get-SecFiles
+
+	.LINK
+	www.poshsec.com
+	
+	.LINK
+	github.com/poshsec
+	
+	#>
+ 
 
 }

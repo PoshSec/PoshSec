@@ -2,12 +2,7 @@ function Get-SecDeviceInventory
 {
 
 
-<#
 
-    Synopsis
-    To generate a list of devices on the network and then export it to an XML document.
-   
-#>
 
 $list = @()
 
@@ -34,5 +29,20 @@ else
     }
 
 
+<#
+		.SYNOPSIS
+	    To generate a list of all devices with an IP address in a domain
+		.DESCRIPTION
+	    Generates a list of devices in a domain that have an IP address, then compares that list to a previously-created baseline
+		.EXAMPLE
+			PS C:\> Get-SecDeviceInventory
+
+		.LINK
+			www.poshsec.com
+	
+		.LINK
+			github.com/poshsec
+	
+	#>
 
 }

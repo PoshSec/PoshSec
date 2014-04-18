@@ -1,4 +1,5 @@
-﻿function Get-SecPasswordsOverExpireDate {
+function Get-SecPasswordsOverExpireDate 
+{
     param (
         [Parameter(Mandatory=$true)]
         [int]$days
@@ -21,13 +22,13 @@
 
     <#    
     .SYNOPSIS
-        Gets current that passwords are older than a certian date.
+        Gets current that passwords are older than a certain date.
     .DESCRIPTION
-        Gets current that passwords are older than a certian date that is specified.
+        Gets current that passwords are older than a certain date that is specified.
     .INPUTS
         System.Int32
     .PARAMETER days
-        This is the number of days to check to see if an accounts passwords is older than.
+        This is the number of days a password should not exceed in age.
     .EXAMPLE
         PS> Get-SecPasswordsOverExpireDate -days 60
             CN=Matt Johnson,OU=IS,DC=PoshSec,DC=com

@@ -12,11 +12,20 @@ function Find-SecAccountNameChecker
         }
 
     }
-    #Search for names associated with processes
-    #Output that list
-    
-    
-    <#
-    Creates a list of accounts that could be linked to any special privileges or processes.
+    <#    
+    .SYNOPSIS
+        Creates a list of accounts that could be linked to any special privileges or processes.
+    .DESCRIPTION
+        Searches for any account names associated with privileges or processes. Functionality must be added for an individual organization's needs.
+    .EXAMPLE
+        PS> Find-SecAccountNameChecker
+           "There are one or more accounts that can be associated with special privileges."
+           CN=MattAdmin
+    .LINK
+        www.poshsec.com
+    .NOTES
+        This function is a PoshSec module.
     #>
+   
+ 
 }

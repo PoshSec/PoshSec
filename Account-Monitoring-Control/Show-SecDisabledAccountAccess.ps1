@@ -1,4 +1,7 @@
-﻿function Show-SecDisabledAccountAccess {
+function Show-SecDisabledAccountAccess 
+{
+    
+
     [CmdletBinding()]
     param (
         [Parameter(Position=1, Mandatory=$false)]
@@ -23,7 +26,7 @@
     .INPUTS
         System.String
     .PARAMETER computerName
-        Name of computer to get the invalid access attempts from.
+        Name of computer from which to collect invalid access attempts.
     .EXAMPLE
         PS> Show-SecDisabledAccountAccess -computerName DC1
             CN=Matt Johnson,OU=IS,DC=PoshSec,DC=com
