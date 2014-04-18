@@ -2,12 +2,6 @@
 
 {
     
-    <#
-    To perform the necessary daily functions of PoshSec
-    Rather than establish baselines, this is to organize and continue reporting.
-    #>
-    
-   
     Get-SecDeviceList
     Get-SecSoftwareInstalled 
     Get-SecSoftwareIntegrity
@@ -17,6 +11,14 @@
     Get-SecLockedOutAccounts
     Get-SecDisabledAccounts
     Get-SecFiles
+<#
+    .SYNOPSIS
+    To perform the necessary daily functions of PoshSec.Rather than establish baselines, this is to organize and continue reporting.
+    .DESCRIPTION
+    Centralized script to use for repitition
+    .LINK
+	www.poshsec.com
 
+#>
 
 }
