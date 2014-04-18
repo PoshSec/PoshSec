@@ -21,5 +21,21 @@ function Get-SecDrivers
     {
         Compare-SecDrivers
     }
+    
+    <#
+		.SYNOPSIS
+        Generates a list of drivers, then calls compare function to generate an exception report	
+		
+	
+		.EXAMPLE
+			PS C:\> Get-SecDrivers
+
+		.LINK
+			www.poshsec.com
+	
+		.LINK
+			github.com/poshsec
+	
+	#> 
 
 }
