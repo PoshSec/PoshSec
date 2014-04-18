@@ -52,7 +52,9 @@ foreach ($computer in $computers)
 {
     $Computerobj = "" | select ComputerName, Uptime, LastReboot
     $wmi = Get-WmiObject -ComputerName $computer -Query "SELECT LastBootUpTime FROM Win32_OperatingSystem"
-    $now = Get-Date
+     if($myerror.count -eq 0)
+	 {
+	$now = Get-Date
     $boottime = $wmi.ConvertToDateTime($wmi.LastBootUpTime)
     $uptime = $now - $boottime
     $d =$uptime.days
@@ -63,5 +65,6 @@ foreach ($computer in $computers)
     $Computerobj.Uptime = "$d Days $h Hours $m Min $s Sec"
     $Computerobj.LastReboot = $boottime
     $Computerobj   
+	}
 }
 }

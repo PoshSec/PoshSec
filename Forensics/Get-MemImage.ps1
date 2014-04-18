@@ -6,7 +6,8 @@ param(
 		[string]$target="localhost"
 		)	
 
-
+if($myerror.count -eq 0)
+{
 Write-Host -Fore Green "Creating Memory Image Directory"
 
 New-PSDrive -Name X -PSProvider filesystem -Root \\$target\c$ | Out-Null  
@@ -26,4 +27,5 @@ Write-Host -Fore Green "Gathering RAM image...."
 		iex "& $command"
 
 	Wait-Process -name winpmem.exe
+	}
 }	

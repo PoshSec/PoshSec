@@ -8,3 +8,4 @@
 . (Join-Path $PSScriptRoot Get-VolatileData.ps1)
 . (Join-Path $PSScriptRoot Get-ProcessOwner.ps1)
 . (Join-Path $PSScriptRoot Get-SystemUptime.ps1)
+. (Join-Path $PSScriptRoot Get-RegistryHives.ps1)
