@@ -52,6 +52,7 @@ Current Developers are:
 * Michael Ortega - @securitymoey
 * Nick Jacob - @MortiousPrime 
 * Ben Ten - @ben0xA
+* Bryan Smith - @securekomodo
 
 Contact
 ==========
