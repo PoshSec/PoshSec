@@ -7,6 +7,7 @@ License: BSD 3-Clause
 
 
 **What is PoshSec?**
+
 PoshSec is a PowerShell module that enables system administrators, information security professionals and other with their security tasks on Windows systems.
 
 This project started by Will Steele (@pen_test) and Matt Johnson (@mwjcomputing) has several goals:
