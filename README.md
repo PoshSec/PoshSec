@@ -1,8 +1,11 @@
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5629ba33057907958b34e4e40bbefff0 "githalytics.com")](http://githalytics.com/PoshSec/PoshSec)
 ![PoshSec](http://www.mwjcomputing.com/images/poshsec.png)
 # PoshSec Readme
+
 Version: 1.0
+
 Release Date: 4/26/2014
+
 License: BSD 3-Clause
 
 
@@ -18,6 +21,7 @@ This project started by Will Steele (@pen_test) and Matt Johnson (@mwjcomputing)
 
 
 **What's New in 1.0?**
+
 - Coincides with PoshSec Framework 1.0 (http://github.com/poshsec/poshsecframework)
 - Cleaner Code Base
 - Updated Utility Functions
