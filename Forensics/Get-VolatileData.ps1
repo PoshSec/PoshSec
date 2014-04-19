@@ -3,9 +3,9 @@ function Get-VolatileData {
 param(
 		[Parameter(Mandatory=$true,Position=0)]
 		[ValidateNotNullOrEmpty()]
-		[string]$target="localhost"
+		[string]$target=$global:PoshSecEvidenceTarget 
 		)	
-
+	$target = $global:PoshSecEvidenceTarget
 
 
 ## ----------------------------------------------------------------------------------------------------------------------------------------

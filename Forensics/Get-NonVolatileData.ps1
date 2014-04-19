@@ -3,9 +3,9 @@ function Get-NonVolatileData {
 param(
 		[Parameter(Mandatory=$true,Position=0)]
 		[ValidateNotNullOrEmpty()]
-		[string]$target="localhost"
+		[string]$target=$global:PoshSecEvidenceTarget 
 		)
-
+	
 ## ----------------------------------------------------------------------------------------------------------------------------------------
 ## Region OS architecture detection
 ## ----------------------------------------------------------------------------------------------------------------------------------------
