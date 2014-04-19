@@ -1,12 +1,7 @@
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5629ba33057907958b34e4e40bbefff0 "githalytics.com")](http://githalytics.com/PoshSec/PoshSec)
-![PoshSec](http://www.mwjcomputing.com/images/poshsec.png)
-# PoshSec Readme
-
-Version: 1.0
-
-Release Date: 4/26/2014
-
-License: BSD 3-Clause
+#PoshSec#
+- Version: 1.0
+- Release Date: 4/26/2014
+- License: BSD 3-Clause
 
 
 **What is PoshSec?**
@@ -30,6 +25,7 @@ This project started by Will Steele (@pen_test) and Matt Johnson (@mwjcomputing)
 
 
 **Installing PoshSec**
+
 1. Download module
 2. Unblock .zip file
 3. Extract module files to $env:userprofile\Documents\WindowsPowerShell\Modules
@@ -40,9 +36,9 @@ Import-Module -Name PoshSec -Force
 ```
 
 **Community Information**
-Mailing list: https://groups.google.com/forum/#!forum/poshsec
-Twitter: @poshsec or #poshsec
-IRC: #poshsec on Freenode.net
+- Mailing list: https://groups.google.com/forum/#!forum/poshsec
+- Twitter: @poshsec or #poshsec
+- IRC: #poshsec on Freenode.net
 
 **Developers**
 - Matt Johnson (@mwjcomputing)
@@ -53,3 +49,6 @@ IRC: #poshsec on Freenode.net
 - Jeff Rottenberger (@ngeekify)
 - Bryan Smith (@securekomodo)
 - Wolfgang Goerlich (@jwgoerlich)
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5629ba33057907958b34e4e40bbefff0 "githalytics.com")](http://githalytics.com/PoshSec/PoshSec)
+
