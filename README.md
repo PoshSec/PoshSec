@@ -4,11 +4,9 @@
 - License: BSD 3-Clause
 
 
-<<<<<<< HEAD
 For a simple how to get started with PoshSec, please visit https://github.com/PoshSec/PoshSec/wiki/Getting-Started-with-PoshSec.
-=======
+
 **What is PoshSec?**
->>>>>>> development
 
 PoshSec is a PowerShell module that enables system administrators, information security professionals and other with their security tasks on Windows systems.
 
@@ -54,22 +52,11 @@ Import-Module -Name PoshSec -Force
 - Bryan Smith (@securekomodo)
 - Wolfgang Goerlich (@jwgoerlich)
 
-<<<<<<< HEAD
-Current Developers are:
-* Matt Johnson - @mwjcomputing
-* J Wolfgang Goerlich - @jwgoerlich
-* Rich Cassara - @rjcassara
-* Michael Ortega - @securitymoey
-* Nick Jacob - @MortiousPrime 
-* Ben Ten - @ben0xA
-* Bryan Smith - @securekomodo
-
 Contact
 ==========
 * www.poshsec.com
 * You can offer your support by emailing team@poshsec.com
 * Twitter: @poshsec
-=======
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5629ba33057907958b34e4e40bbefff0 "githalytics.com")](http://githalytics.com/PoshSec/PoshSec)
 
->>>>>>> development
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5629ba33057907958b34e4e40bbefff0 "githalytics.com")](http://githalytics.com/PoshSec/PoshSec)
