@@ -32,6 +32,7 @@ Begin{
 
 } # End Begin statement
 
+<<<<<<< HEAD
 # Start Process statement
 Process {   
     
@@ -41,6 +42,15 @@ Process {
     # Create Report location and run Compare
     [string]$Report = Get-DateISO8601 -Prefix ".\$Computer-Ports-Exception-Report" -Suffix ".xml"
     $Compare = Compare-Object -ReferenceObject $Open -DifferenceObject $Baseline -CaseSensitive
+=======
+      [array]$open = Import-Clixml $filename
+      [array]$baseline = Import-Clixml ".\Baselines\$computer-Ports-Baseline.xml"
+      
+      Move-Item $filename .\Reports
+      
+      [string]$exception = Get-DateISO8601 -Prefix ".\$computer-Ports-Exception-Report" -Suffix ".xml"
+      Compare-Object -ReferenceObject $baseline -DifferenceObject $open -CaseSensitive | Export-Clixml  ".\Exception-Reports\$exception"   
+>>>>>>> development
 
 
 }
