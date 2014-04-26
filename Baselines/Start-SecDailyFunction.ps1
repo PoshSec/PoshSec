@@ -6,19 +6,12 @@
     Get-SecSoftwareInstalled 
     Get-SecSoftwareIntegrity
     Get-SecOpenPort
-<<<<<<< HEAD:Baselines/Start-SecDailyFunction.ps1
     Get-SecWAP
     Get-SecExpiredAccount
     Get-SecAdminAccount
     Get-SecLockedOutAccount
     Get-SecDisabledAccount
     Get-SecFile
-=======
-    Get-SecExpiredAccounts
-    Get-SecAdminAccounts
-    Get-SecLockedOutAccounts
-    Get-SecDisabledAccounts
-    Get-SecFiles
 <#
     .SYNOPSIS
     To perform the necessary daily functions of PoshSec.Rather than establish baselines, this is to organize and continue reporting.
