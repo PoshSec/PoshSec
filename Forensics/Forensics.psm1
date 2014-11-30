@@ -9,3 +9,6 @@
 . (Join-Path $PSScriptRoot Get-ProcessOwner.ps1)
 . (Join-Path $PSScriptRoot Get-SystemUptime.ps1)
 . (Join-Path $PSScriptRoot Get-RegistryHives.ps1)
+. (Join-Path $PSScriptRoot Get-SecADSid.ps1)
+. (Join-Path $PSScriptRoot Get-SecLocalSID.ps1)
+. (Join-Path $PSScriptRoot Get-SecCurrentControlSet.ps1)
