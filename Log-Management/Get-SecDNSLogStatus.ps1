@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿function Get-SecDNSLogStatus {
+function Get-SecDNSLogStatus {
   
     <#    
     .SYNOPSIS
@@ -35,46 +34,4 @@
   } else {
     Write-Error -Message 'DNS does not appear to be installed on this machine.'
   }
-
-=======
-function Get-SecDNSLogStatus 
-{
->>>>>>> 4def5730b9a04899a0d4002fa835fc90c57b759e
-
-
-<<<<<<< HEAD
 }
-=======
-foreach ($f in Get-ChildItem $rootpath)
-{
-	foreach ($i in Get-ChildItem $f)
-	{
-		if (Test-Path $i -include Dns.log)
-		{
-			echo($i.name + "           DNS Logging Enabled")
-		}
-		else
-		{
-			echo($i.name + " ***DNS Logging NOT Enabled***")
-		}
-	}
-}
-
-	<#
-	.SYNOPSIS
-        Verifies that DNS log files exist that can then be used for inventory purposes
-	
-	.EXAMPLE
-	PS C:\> Get-SecDNSLogStatus
-        "DNS Logging Enabled"
-
-	.LINK
-	www.poshsec.com
-	
-	.LINK
-	github.com/poshsec
-	
-	#> 
-
-}
->>>>>>> 4def5730b9a04899a0d4002fa835fc90c57b759e
