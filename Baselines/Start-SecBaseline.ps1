@@ -13,15 +13,15 @@ function Start-SecBaseline
      #>
     
         
-    if(-NOT(Test-Path ".\Exception-Reports"))
+    if(-NOT(Test-Path '.\Exception-Reports'))
         {
             New-Item .\Exception-Reports -type directory
         }
-    if(-NOT(Test-Path ".\Baselines"))
+    if(-NOT(Test-Path '.\Baselines'))
         {
             New-Item .\Baselines -type directory
         }
-    if(-NOT(Test-Path ".\Reports"))
+    if(-NOT(Test-Path '.\Reports'))
         {
             New-Item .\Reports -type directory
         }
@@ -51,11 +51,11 @@ function Start-SecBaseline
         } 
         else {  
               
-        Get-ADGroupMember -Identity administrators | Export-Clixml ".\Baselines\Admin-Baseline.xml"
-        Search-ADAccount -PasswordNeverExpires | Export-Clixml ".\Baselines\Never-Expires-Baseline.xml"
-        Search-ADAccount -AccountExpired | Export-Clixml ".\Baselines\Expired-Baseline.xml"
-        Search-ADAccount -AccountDisabled | Export-Clixml ".\Baselines\Disabled-Baseline.xml"
-        Search-ADAccount -LockedOut | Export-Clixml ".\Baselines\Locked-Baseline.xml"
+        Get-ADGroupMember -Identity administrators | Export-Clixml '.\Baselines\Admin-Baseline.xml'
+        Search-ADAccount -PasswordNeverExpires | Export-Clixml '.\Baselines\Never-Expires-Baseline.xml'
+        Search-ADAccount -AccountExpired | Export-Clixml '.\Baselines\Expired-Baseline.xml'
+        Search-ADAccount -AccountDisabled | Export-Clixml '.\Baselines\Disabled-Baseline.xml'
+        Search-ADAccount -LockedOut | Export-Clixml '.\Baselines\Locked-Baseline.xml'
         Get-SecDeviceInventory
         Get-SecSoftwareInstalled 
         Get-SecSoftwareIntegrity
