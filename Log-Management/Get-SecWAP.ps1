@@ -1,11 +1,7 @@
 function Get-SecWAP
 {
 
-    <#
-    Synopsis
-    To use each workstation as a sensor, by checking for available wireless networks and comparing it to the baseline of networks
-    This works with CSIS Control 7 Wireless Device Control
-    #>
+    
 
     $computer = Get-Content Env:\COMPUTERNAME
     $filename = Get-DateISO8601 -Prefix ".\$computer-WAP" -Suffix ".xml"
@@ -35,6 +31,14 @@ function Get-SecWAP
         # The script can be emailed for review or processing in the ticketing system:
         # Send-MailMessage -To -Subject "Wireless access point exception for $computer" -Body "The report is attached." -Attachments $filename
     }
-
+    <#
+    .SYNOPSIS
+    To use each workstation as a sensor, by checking for available wireless networks and comparing it to the baseline of networks
+    This works with CSIS Control 7 Wireless Device Control
+    .DESCRIPTION
+    Uses netsh to generate a list of wireless access points accessible to each workstation
+    .LINK
+    www.poshsec.com
+    #>
     
 }
