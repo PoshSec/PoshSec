@@ -30,7 +30,7 @@ param(
 [parameter(Mandatory=$true)]
 [String] $file
 )
-
+$result = "Error."
 if (Test-Path $file) {
 
 [Byte[]] $header = Get-Content -Encoding Byte -Path $file -TotalCount 8
@@ -40,9 +40,6 @@ $a= [Convert]::ToString($byte,16).PadLeft(2,'0')
  $hex += $a
 }
 
-#Write-Host $hex
-#Write-Host $hex.length
-
 switch -regex ($hex){
 
 '^4d5a'{$result = "$file is an EXE"}
@@ -50,15 +47,15 @@ switch -regex ($hex){
 '^89504e47'{$result = "$file is a PNG"}
 '^ffd8ffe0'{$result = "$file is a JPG"}
 '^47494638'{$result = "$file is a GIF"}
-'^7f454c46'{$result = "$file is an ELF Binary}
+'^7f454c46'{$result = "$file is an ELF Binary"}
 
-default {"File type unknown for $file"}
+default {$result = "File type unknown for $file"}
 
 }
-Write-Host $result
+
 }
 
-
+return $result
 }
 
 
