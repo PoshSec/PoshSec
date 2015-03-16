@@ -70,13 +70,13 @@ VariablesToExport = '*'
 AliasesToExport = '*'
 
 # List of all modules packaged with this module.
-ModuleList = @(@{ModuleName = 'account-monitoring-control'; ModuleVersion = '1.0.0.0'; GUID = '2cf86856-3550-4150-8aaa-b72e83f819b0'},
+ModuleList = @(@{ModuleName = 'account-monitoring-control'; ModuleVersion = '2.0.0'; GUID = '2cf86856-3550-4150-8aaa-b72e83f819b0'},
                @{ModuleName = 'authorized-devices'; ModuleVersion = '1.0.0.0'; GUID = 'd026637b-ddf4-46d0-baa5-08e93a11b682'},
-               @{ModuleName = 'Auditing'; ModuleVersion = '2.0.0.0'; GUID = '3f07d251-84fe-4e42-bf6a-e10a179f0e97'},
+               @{ModuleName = 'Auditing'; ModuleVersion = '2.0.0'; GUID = '3f07d251-84fe-4e42-bf6a-e10a179f0e97'},
                @{ModuleName = 'baselines'; ModuleVersion = '1.0.0.0'; GUID = '1cf19d58-94ef-47c3-a558-23417ea90681'},
 	       @{ModuleName = 'forensics'; ModuleVersion = '1.0.0.0'; GUID = 'f6e91c7d-3d0a-41db-9324-9f9f5bb7142d'},
                @{ModuleName = 'log-management'; ModuleVersion = '1.0.0.0'; GUID = 'b4e3aeb9-d19c-4fe6-84fd-3f23bf698833'},
-               @{ModuleName = 'Malware-Detection'; ModuleVersion = '1.0.0.0'; GUID = '3631650d-5f48-42f2-92de-5f0b3531dc4b'},
+               @{ModuleName = 'Malware-Detection'; ModuleVersion = '2.0.0'; GUID = '3631650d-5f48-42f2-92de-5f0b3531dc4b'},
                @{ModuleName = 'network-baseline'; ModuleVersion = '1.0.0.0'; GUID = 'dc438100-013e-42aa-98c0-81b8833d5e7a'},
                @{ModuleName = 'software-management'; ModuleVersion = '1.0.0.0'; GUID = 'e6f46747-8f3c-4703-aea1-d534eba663d4'},
                @{ModuleName = 'utility-functions'; ModuleVersion = '1.0.0.0'; GUID = '7f701b23-9af6-4871-b2f2-985f4609cc58'}
