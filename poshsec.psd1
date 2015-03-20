@@ -75,7 +75,6 @@ ModuleList = @(@{ModuleName = 'account-monitoring-control'; ModuleVersion = '2.0
                @{ModuleName = 'Auditing'; ModuleVersion = '2.0.0'; GUID = '3f07d251-84fe-4e42-bf6a-e10a179f0e97'},
                @{ModuleName = 'baselines'; ModuleVersion = '1.0.0.0'; GUID = '1cf19d58-94ef-47c3-a558-23417ea90681'},
 	       @{ModuleName = 'forensics'; ModuleVersion = '1.0.0.0'; GUID = 'f6e91c7d-3d0a-41db-9324-9f9f5bb7142d'},
-	       @{ModuleName='Intrusion-Detection'; ModuleVersion = '1.0.0'; GUID = '453cb418-7add-4bf8-83ed-6a4c1873c457'},
 	       @{ModuleName = 'Intrusion-Detection'; ModuleVersion = '1.0.0'; GUID = '453cb418-7add-4bf8-83ed-6a4c1873c457'}
                @{ModuleName = 'log-management'; ModuleVersion = '1.0.0.0'; GUID = 'b4e3aeb9-d19c-4fe6-84fd-3f23bf698833'},
                @{ModuleName = 'Malware-Detection'; ModuleVersion = '2.0.0'; GUID = '3631650d-5f48-42f2-92de-5f0b3531dc4b'},
