@@ -5,14 +5,17 @@
 ##### New in this release
 **New Features**
 - Get-SecADComputerInventory - Gets all computer objects inside users Active Directory domain.
+- Get-SecAllADAccount - Gets all accounts in an Active Directory domain.
 - New Auditing Sub Module. Commands include
- * Get-SecNewProcessCreation - Checks the Security Event Log for Process Creation Events.
+	* Get-SecNewProcessCreation - Checks the Security Event Log for Process Creation Events.
+- New Intrusion Detection Sub Module 
+	* New-HoneyToken - Inject artificial credentials into LSASS.
 
 **Quality of life improvements**
 - All commands have full and updated help.
 
 ##### Features removed in this release
-
+Get-SecAllAccounts - Changed name and rewrote as Get-SecAllADAccount
 
 ##### Installing PoshSec
 1. Download module
