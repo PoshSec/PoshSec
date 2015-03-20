@@ -32,7 +32,7 @@ ModuleList = @(@{ModuleName = 'account-monitoring-control'; ModuleVersion = '2.0
 
 # List of all files packaged with this module
 FileList = 'account-monitoring-control.psm1', 'account-monitoring-control.psd1', 'Get-SecAccountThatDontExpire.ps1',
-     'Get-SecAccountThatExpire.ps1', 'Get-SecAllAccount.ps1', 'Get-SecDisabledAccount.ps1',
+     'Get-SecAccountThatExpire.ps1', 'Get-SecAllADAccount.ps1', 'Get-SecDisabledAccount.ps1',
      'Get-SecLockedOutAccount.ps1', 'Get-SecPasswordOverExpireDate.ps1', 'Show-SecDisabledAccountAccess.ps1', 
      'Get-SecInactiveAccount.ps1', 'Find-SecAccountNameChecker.ps1', 'Get-SecAdminAccount.ps1', 'Enable-SecVulnAccount.ps1'
 }
