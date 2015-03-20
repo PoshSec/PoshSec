@@ -1,6 +1,6 @@
 ﻿. (Join-Path $PSScriptRoot Get-SecAccountThatDontExpire.ps1)
 . (Join-Path $PSScriptRoot Get-SecAccountThatExpire.ps1)
-. (Join-Path $PSScriptRoot Get-SecAllAccount.ps1)
+. (Join-Path $PSScriptRoot Get-SecAllADAccount.ps1)
 . (Join-Path $PSScriptRoot Get-SecDisabledAccount.ps1)
 . (Join-Path $PSScriptRoot Get-SecLockedOutAccount.ps1)
 . (Join-Path $PSScriptRoot Get-SecPasswordOverExpireDate.ps1)

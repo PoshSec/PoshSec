@@ -16,7 +16,7 @@ Author = 'PoshSec'
 Copyright = 'BSD 3-Clause'
 
 # Description of the functionality provided by this module
-Description = 'PoshSec Account Monitoring and Control Module'
+Description = 'This is the PoshSec PowerShell Modules Account Monitoring and Control submodule'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '2.0'
@@ -28,11 +28,11 @@ CmdletsToExport = '*'
 FunctionsToExport = '*'
 
 # List of all modules packaged with this module.
-ModuleList = @(@{ModuleName = 'account-monitoring-control'; ModuleVersion = '1.0.0.0'; GUID = '2cf86856-3550-4150-8aaa-b72e83f819b0'})
+ModuleList = @(@{ModuleName = 'account-monitoring-control'; ModuleVersion = '2.0.0'; GUID = '2cf86856-3550-4150-8aaa-b72e83f819b0'})
 
 # List of all files packaged with this module
 FileList = 'account-monitoring-control.psm1', 'account-monitoring-control.psd1', 'Get-SecAccountThatDontExpire.ps1',
-     'Get-SecAccountThatExpire.ps1', 'Get-SecAllAccount.ps1', 'Get-SecDisabledAccount.ps1',
+     'Get-SecAccountThatExpire.ps1', 'Get-SecAllADAccount.ps1', 'Get-SecDisabledAccount.ps1',
      'Get-SecLockedOutAccount.ps1', 'Get-SecPasswordOverExpireDate.ps1', 'Show-SecDisabledAccountAccess.ps1', 
      'Get-SecInactiveAccount.ps1', 'Find-SecAccountNameChecker.ps1', 'Get-SecAdminAccount.ps1', 'Enable-SecVulnAccount.ps1'
 }
