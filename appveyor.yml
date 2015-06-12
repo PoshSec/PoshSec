@@ -1,5 +1,5 @@
 install:
-  - cinst pester
+  - cinst pester -y
 
 build: false
 
