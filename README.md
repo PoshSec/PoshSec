@@ -1,5 +1,5 @@
 # PoshSec PowerShell Module
-- Release 2.0
+- Release 2.0-Pre
 - License BSD 3-Clause
 
 ##### New in this release
@@ -26,11 +26,24 @@ Get-SecAllAccounts - Changed name and rewrote as Get-SecAllADAccount
 ```PowerShell
 Import-Module -Name PoshSec -Force
 ```
+
+##### Project Information
+
+The project maintains a Kanban board that anyone can view. You can view the board at [https://tree.taiga.io/project/PoshSec/kanban](https://tree.taiga.io/project/PoshSec/kanban). You can get features added to the board by emailing [Matt Johnson](mailto:mjohnson@poshsec.com) or filing an issue on our [Github page](https://github.com/PoshSec/PoshSec/issues).
+
+***Pester Tests***
+
+[![Build status](https://ci.appveyor.com/api/projects/status/3p9ssqte9a905qm8/branch/PoshSec?svg=true)](https://ci.appveyor.com/project/mwjcomputing/poshsec/branch/PoshSec)
+
+***Issues Status***
+
+[![Stories in Ready](https://badge.waffle.io/poshsec/poshsec.svg?label=In%20Progress&title=InProgress)](http://waffle.io/poshsec/poshsec)
+
+
 ##### Community Information
 - Mailing list: [https://groups.google.com/forum/#!forum/poshsec] (https://groups.google.com/forum/#!forum/poshsec)
 - Twitter: [@poshsec] (https://twitter.com/poshsec) or [#poshsec] (https://twitter.com/search?q=%23poshsec&src=typd)
 - IRC: #poshsec on Freenode.net
-- Bug Tracker: [https://github.com/PoshSec/PoshSec/issues] (https://github.com/PoshSec/PoshSec/issues)
 
 ##### Contact
 * [www.poshsec.com](http://www.poshsec.com)
