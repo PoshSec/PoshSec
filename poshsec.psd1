@@ -22,7 +22,7 @@ Copyright = 'BSD 3-Clause'
 Description = 'PoshSec Security Module'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '2.0'
+PowerShellVersion = '3.0'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
