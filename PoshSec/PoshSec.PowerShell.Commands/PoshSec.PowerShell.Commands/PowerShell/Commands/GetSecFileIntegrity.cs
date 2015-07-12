@@ -1,72 +1,76 @@
 ﻿// <copyright file="GetPoshFileIntegrity.cs" company="PoshSec (https://github.com/PoshSec/)">
-//     Copyright © 2013 and distributed under the BSD license.
+//     Copyright © 2015 and distributed under the 3-clause BSD license.
 // </copyright>
+
+using PoshSec.Properties;
 
 namespace PoshSec.PowerShell.Commands
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
-    using System.Management.Automation;
     using System.Security.Cryptography;
-    using Microsoft.PowerShell.Commands;
     using Microsoft.Win32;
+    using System.Management.Automation;
 
     /// <summary>
     /// Get a string with a prefix, the current date/time in ISO 8601 format, and a suffix.
     /// ISO 8601 Data elements and interchange formats – Information interchange – Representation of dates and time
     /// </summary>
-    [System.Management.Automation.Cmdlet(
-        System.Management.Automation.VerbsCommon.Get,
-        PoshSec.PowerShell.Nouns.SecFileIntegrity)]
-    public class GetSecFileIntegrity : System.Management.Automation.PSCmdlet
+    [Cmdlet(
+        VerbsCommon.Get,
+        Nouns.SecFileIntegrity)]
+    public class GetSecFileIntegrity : PSCmdlet
     {
         /// <summary>
         /// Provides a record-by-record processing functionality for the cmdlet.
         /// </summary>
         protected override void ProcessRecord()
         {
-            string registryKeyName = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths";            
+            const string registryKeyName = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths";            
             RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Default);
             RegistryKey subKey = baseKey.OpenSubKey(registryKeyName);
 
             SHA1 sha = new SHA1CryptoServiceProvider();
 
-            foreach (string app in subKey.GetSubKeyNames())
-            {
-                PoshSecFileIntegrity fileIntegrity = new PoshSecFileIntegrity();
-
-                RegistryKey fileKey = subKey.OpenSubKey(app);
-                fileIntegrity.RegistryPath = fileKey.Name;
-
-                // Enumerate the value names, find the default (string.Empty), get the path, and exit
-                foreach (string name in fileKey.GetValueNames())
+            if (subKey != null)
+                foreach (string app in subKey.GetSubKeyNames())
                 {
-                    if (name == string.Empty)
+                    var fileIntegrity = new PoshSecFileIntegrity();
+
+                    RegistryKey fileKey = subKey.OpenSubKey(app);
+                    if (fileKey != null)
                     {
-                        string value = fileKey.GetValue(name).ToString();
-                        value = value.Trim();
-                        value = value.Trim('"');
-                        value = value.Trim();
-                        
-                        fileIntegrity.FilePath = value;
-                        fileIntegrity.Exists = File.Exists(fileIntegrity.FilePath);
-                        break;
-                    }
-                }
+                        fileIntegrity.RegistryPath = fileKey.Name;
 
-                // If the file exists, read the bytes and get the hash
-                if (fileIntegrity.Exists)
-                {
-                    BinaryReader fileStream = new BinaryReader(File.Open(fileIntegrity.FilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
-                    byte[] fileBytes = fileStream.ReadBytes((int)fileStream.BaseStream.Length);
-                    byte[] fileHash = sha.ComputeHash(fileBytes);
-                    fileIntegrity.Sha1Hash = Convert.ToBase64String(fileHash);
-                }
+                        // Enumerate the value names, find the default (string.Empty), get the path, and exit
+                        foreach (string name in fileKey.GetValueNames())
+                        {
+                            if (name == string.Empty)
+                            {
+                                string value = fileKey.GetValue(name).ToString();
+                                value = value.Trim();
+                                value = value.Trim('"');
+                                value = value.Trim();
+                        
+                                fileIntegrity.FilePath = value;
+                                fileIntegrity.Exists = File.Exists(fileIntegrity.FilePath);
+                                break;
+                            }
+                        }
+                    }
+
+                    // If the file exists, read the bytes and get the hash
+                    if (fileIntegrity.Exists)
+                    {
+                        var fileStream = new BinaryReader(File.Open(fileIntegrity.FilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+                        byte[] fileBytes = fileStream.ReadBytes((int)fileStream.BaseStream.Length);
+                        byte[] fileHash = sha.ComputeHash(fileBytes);
+                        fileIntegrity.Sha1Hash = Convert.ToBase64String(fileHash);
+                    }
             
-                // Send the file integrity object onto the pipeline. For baselining, consume with Export-Clixml.
-                this.WriteObject(fileIntegrity);
-            }
+                    // Send the file integrity object onto the pipeline. For baselining, consume with Export-Clixml.
+                    WriteObject(fileIntegrity);
+                }
         }
 
         /// <summary>
@@ -79,10 +83,10 @@ namespace PoshSec.PowerShell.Commands
             /// </summary>
             public PoshSecFileIntegrity()
             {
-                this.Exists = false;
-                this.FilePath = string.Empty;
-                this.RegistryPath = string.Empty;
-                this.Sha1Hash = string.Empty;
+                Exists = false;
+                FilePath = string.Empty;
+                RegistryPath = string.Empty;
+                Sha1Hash = string.Empty;
             }
 
             /// <summary>
@@ -98,12 +102,12 @@ namespace PoshSec.PowerShell.Commands
             /// <summary>
             /// Gets or sets a value indicating the registry path.
             /// </summary>
-            public string RegistryPath { get; set; }
+            public string RegistryPath { [UsedImplicitly] private get; set; }
 
             /// <summary>
             /// Gets or sets a value containing the SHA hash in Base64 encoding.
             /// </summary>
-            public string Sha1Hash { get; set; }
+            public string Sha1Hash { [UsedImplicitly] private get; set; }
         }
     }
 }

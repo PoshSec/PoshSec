@@ -1,20 +1,18 @@
 ﻿// <copyright file="PoshSecHelloCommand.cs" company="PoshSec (https://github.com/PoshSec/)">
-//     Copyright © 2013 and distributed under the BSD license.
+//     Copyright © 2015 and distributed under the 3-clause BSD license.
 // </copyright>
 
 namespace PoshSec.PowerShell.Commands
 {
-    using System;
     using System.Management.Automation;
-    using Microsoft.PowerShell.Commands;
 
     /// <summary>
     /// Sample Hello World cmdlet.
     /// </summary>
-    [System.Management.Automation.Cmdlet(
-        System.Management.Automation.VerbsCommon.Get,
-        PoshSec.PowerShell.Nouns.PoshSecHello)]
-    public class PoshSecHelloCommand : System.Management.Automation.PSCmdlet
+    [Cmdlet(
+        VerbsCommon.Get,
+        Nouns.PoshSecHello)]
+    public class PoshSecHelloCommand : PSCmdlet
     {
         /// <summary>
         /// Gets or sets the person's name.
@@ -27,8 +25,8 @@ namespace PoshSec.PowerShell.Commands
         /// </summary>
         protected override void ProcessRecord()
         {
-            string result = string.Format("Hello world. Hello {0}.", this.Name);
-            this.WriteObject(result);
+            string result = string.Format("Hello {0}. Thank you for installing PoshSec. You can find more information at www.poshsec.com or https://github.com/poshsec", Name);
+            WriteObject(result);
         }
     }
 }

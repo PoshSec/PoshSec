@@ -14,6 +14,7 @@
 **Quality of life improvements**
 - All commands have full and updated help.
 - New module structure. Release includes Pester test files.
+- Removed PowerShell 2.0 Support
 
 ##### Features removed in this release
 Get-SecAllAccounts - Changed name and rewrote as Get-SecAllADAccount

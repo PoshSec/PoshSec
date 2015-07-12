@@ -1,21 +1,20 @@
-﻿// <copyright file="PoshSecHelloCommand.cs" company="PoshSec (https://github.com/PoshSec/)">
-//     Copyright © 2013 and distributed under the BSD license.
+﻿// <copyright file="PGetDateISO8601.cs" company="PoshSec (https://github.com/PoshSec/)">
+//     Copyright © 2015 and distributed under the 3-clause BSD license.
 // </copyright>
 
 namespace PoshSec.PowerShell.Commands
 {
-        using System;
+    using System;
     using System.Management.Automation;
-    using Microsoft.PowerShell.Commands;
 
     /// <summary>
     /// Get a string with a prefix, the current date/time in ISO 8601 format, and a suffix.
     /// ISO 8601 Data elements and interchange formats – Information interchange – Representation of dates and time
     /// </summary>
-    [System.Management.Automation.Cmdlet(
-        System.Management.Automation.VerbsCommon.Get,
-        PoshSec.PowerShell.Nouns.DateISO8601)]
-    public class GetDateISO8601 : System.Management.Automation.PSCmdlet
+    [Cmdlet(
+        VerbsCommon.Get,
+        Nouns.DateISO8601)]
+    public class GetDateISO8601 : PSCmdlet
     {
         /// <summary>
         /// Gets or sets a value indicating the beginning of the string.
@@ -33,13 +32,13 @@ namespace PoshSec.PowerShell.Commands
         /// Gets or sets the value indicating whether to include seconds.
         /// </summary>
         [Parameter(Mandatory = false)]
-        public System.Management.Automation.SwitchParameter Seconds { get; set; }
+        public SwitchParameter Seconds { get; set; }
 
         /// <summary>
         /// Gets or sets the value indicating whether to include milliseconds.
         /// </summary>
         [Parameter(Mandatory = false)]
-        public System.Management.Automation.SwitchParameter Milliseconds { get; set; }
+        public SwitchParameter Milliseconds { get; set; }
 
         /// <summary>
         /// Provides a record-by-record processing functionality for the cmdlet.
@@ -56,16 +55,16 @@ namespace PoshSec.PowerShell.Commands
             string second = now.Second.ToString("00");
             string millisecond = now.Millisecond.ToString("000");
 
-            string result = string.Format("{0}-{1}-{2}-{3}-{4}-{5}", this.Prefix, year, month, day, hour, minute);
+            string result = string.Format("{0}-{1}-{2}-{3}-{4}-{5}", Prefix, year, month, day, hour, minute);
 
-            if (this.Seconds)
+            if (Seconds)
             {
                 result = string.Concat(result, "-", second);
-                if (this.Milliseconds) result = string.Concat(result, "-", millisecond);
+                if (Milliseconds) result = string.Concat(result, "-", millisecond);
             }
 
-            result = string.Concat(result, this.Suffix);
-            this.WriteObject(result);
+            result = string.Concat(result, Suffix);
+            WriteObject(result);
         }
     }
 }
