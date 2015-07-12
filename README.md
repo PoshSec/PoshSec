@@ -13,6 +13,7 @@
 
 **Quality of life improvements**
 - All commands have full and updated help.
+- New module structure. Release includes Pester test files.
 
 ##### Features removed in this release
 Get-SecAllAccounts - Changed name and rewrote as Get-SecAllADAccount
