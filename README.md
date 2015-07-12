@@ -48,5 +48,5 @@ The project maintains a Kanban board that anyone can view. You can view the boar
 
 ##### Contact
 * [www.poshsec.com](http://www.poshsec.com)
-* You can offer your support by emailing [team@poshsec.com] (team@poshsec.com)
+* [team@poshsec.com] (team@poshsec.com)
 * Twitter: [@poshsec] (https://twitter.com/poshsec)
