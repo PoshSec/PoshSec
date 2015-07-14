@@ -6,3 +6,10 @@ Describe 'PoshSec Module Load' {
     $Commands.Count | Should Be 56
   }
 }
+
+Describe 'Get-DateISO8601 works correctly' {
+	It 'Should produce correct output' {
+		$Command = @(Get-DateISO8601 -Prefix 'Pester' -Suffix 'Tests')
+    $Command | Should Be "Pester-$(Get-Date -f yyyy-MM-dd-HH-mm)Tests"
+	}
+}
