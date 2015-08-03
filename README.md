@@ -6,6 +6,7 @@
 **New Features**
 - Get-SecADComputerInventory - Gets all computer objects inside users Active Directory domain.
 - Get-SecAllADAccount - Gets all accounts in an Active Directory domain.
+- Get-SecDomainAdmins - Gets domain admins from current or specified domain.
 - New Auditing Sub Module. Commands include
 	* Get-SecNewProcessCreation - Checks the Security Event Log for Process Creation Events.
 - New Intrusion Detection Sub Module 
