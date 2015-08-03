@@ -13,3 +13,10 @@ Describe 'Get-DateISO8601 works correctly' {
     $Command | Should Be "Pester-$(Get-Date -f yyyy-MM-dd-HH-mm)Tests"
 	}
 }
+
+Describe 'Convert-FQDNtoDN works correctly.' {
+  It 'Should produce a correct distinguished name' {
+    $Command = @(Convert-FQDNtoDN -domainFQDN 'dev.poshsec.com')
+    $Command | Should Be 'DC=dev,DC=poshsec,dc=com'
+  }
+}
