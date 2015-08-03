@@ -5,31 +5,60 @@ function Get-SecDomainAdmins {
       .DESCRIPTION
         This grabs the members of the current domain's Domain Admins group.
       .NOTES
-        This is a member of the PoshSec Account Monitoring and Control module
-      .EXAMPLE
-        Get-SecDomainAdmins
+        This is a member of the PoshSec Account Monitoring and Control module.
 
-        CN=Matt Johnson, OU=Users, DC=PoshSec, DC=COM          
-        CN=Ben Ten, OU=Users, DC=PoshSec, DC=COM
-        CN=Bob Newhart, OU=Users, DC=PoshSec, DC=COM
+        You MUST have access into the domain you are enumerating.
+      .EXAMPLE
+        Get-SecDomainAdmins -CurrentDomain
+
+        CN=Matt Johnson,OU=Users,DC=PoshSec,DC=COM          
+        CN=Ben Ten,OU=Users, DC=PoshSec, DC=COM
+        CN=Bob Newhart,OU=Users,DC=PoshSec,DC=COM
+      .EXAMPLE
+        Get-SecDomainAdmins -Domain dev.poshsec.com -forest poshsec.com
+
+        CN=MWJ Dev,OU=Users,DC=DEV,DC=POSHSEC,DC=COM
+        CN=BT Dev,OU=Users,DC=DEV,DC=POSHSEC,DC=COM
     #>
 
   [CmdletBinding()]
-  param()
+  param(
+    [Parameter(Mandatory=$true,ParameterSetName = 'CurrentDomain')]
+    [switch]$CurrentDomain,
+    [Parameter(Mandatory=$true,ParameterSetName = 'TypedInfo')]
+    [String]$Forest,
+    [Parameter(Mandatory=$true,ParameterSetName = 'TypedInfo')]
+    [string]$Domain
+  )
   
   Write-Verbose -Message '******* ENTERING GET-SECDOMAINADMINS *******'
-  Write-Verbose -Message 'Getting current forest.'
-  $Forest = [System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()
-  Write-Verbose -Message 'Getting current domain.'
-  $Domain = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
+
+  if ($Forest -and $Domain) {
+    Write-Verbose -Message "Setting Forest Context to: $Forest"
+    $ForestType = [System.DirectoryServices.ActiveDirectory.DirectoryContextType]::Forest
+    $ForestContext = New-Object -TypeName System.DirectoryServices.ActiveDirectory.DirectoryContext -ArgumentList $ForestType, $Forest
+    $SetForest = [System.DirectoryServices.ActiveDirectory.Forest]::GetForest($ForestContext)
+    
+    Write-Verbose -Message "Setting Domain Context to: $Domain"
+    $DomainType = [System.DirectoryServices.ActiveDirectory.DirectoryContextType]::Domain
+    $DomainContext = New-Object -TypeName System.DirectoryServices.ActiveDirectory.DirectoryContext -ArgumentList $DomainType, $Domain
+    $SetDomain = [System.DirectoryServices.ActiveDirectory.Domain]::GetDomain($DomainContext)
+  }
+  else {
+    Write-Verbose -Message 'Getting current forest.'
+    $SetForest = [System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()
+    Write-Verbose -Message 'Getting current domain.'
+    $SetDomain = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
+  }
+
   Write-Verbose "Current domain is $Domain"
-  $RootDomain = [string]($Domain.Name)
+  $RootDomain = [string]($SetDomain.Name)
 
   Write-Verbose -Message 'Converting fully qualified domain name to a distinguished name.'
   $DomainDN = Convert-FQDNtoDN -domainFQDN $RootDomain
   
   Write-Verbose -Message 'Locating global catalog server'
-  $GlobalCatalog = $Forest.FindGlobalCatalog()
+  $GlobalCatalog = $SetForest.FindGlobalCatalog()
   Write-Verbose -Message "------- Global catalog server is: $GlobalCatalog"
   $ActiveDirectoryObj = [adsi]"GC://$DomainDN"
   Write-Verbose -Message 'Determining the domain SID'
