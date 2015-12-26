@@ -2,6 +2,8 @@
 - Release 2.0-Pre
 - License BSD 3-Clause
 
+- PoshSec 2.0 is expected to be released in March 2016.
+
 ##### New in this release
 **New Features**
 - Get-SecADComputerInventory - Gets all computer objects inside users Active Directory domain.
@@ -19,6 +21,7 @@
 
 ##### Features removed in this release
 Get-SecAllAccounts - Changed name and rewrote as Get-SecAllADAccount
+Forensics Functions - With the amazing [PowerForensics](https://github.com/Invoke-IR/PowerForensics) module, we hope that if you want to add items related to forensics you would submit a pull request to that project.
 
 ##### Installing PoshSec
 1. Download module
@@ -44,11 +47,11 @@ The project maintains a Kanban board that anyone can view. You can view the boar
 
 
 ##### Community Information
-- Mailing list: [https://groups.google.com/forum/#!forum/poshsec] (https://groups.google.com/forum/#!forum/poshsec)
-- Twitter: [@poshsec] (https://twitter.com/poshsec) or [#poshsec] (https://twitter.com/search?q=%23poshsec&src=typd)
+- Mailing list: [https://groups.google.com/forum/#!forum/poshsec](https://groups.google.com/forum/#!forum/poshsec)
+- Twitter: [@poshsec](https://twitter.com/poshsec) or [#poshsec](https://twitter.com/search?q=%23poshsec&src=typd)
 - IRC: #poshsec on Freenode.net
 
 ##### Contact
 * [www.poshsec.com](http://www.poshsec.com)
-* [team@poshsec.com] (team@poshsec.com)
-* Twitter: [@poshsec] (https://twitter.com/poshsec)
+* [team@poshsec.com](team@poshsec.com)
+* Twitter: [@poshsec](https://twitter.com/poshsec)
