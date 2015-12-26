@@ -2,7 +2,7 @@
 - Release 2.0-Pre
 - License BSD 3-Clause
 
-PoshSec 2.0 is expected to be released March 2016.
+#####PoshSec 2.0 is expected to be released March 2016.
 
 ##### New in this release
 **New Features**
