@@ -20,8 +20,8 @@
 - Removed PowerShell 2.0 Support
 
 ##### Features removed in this release
-Get-SecAllAccounts - Changed name and rewrote as Get-SecAllADAccount
-Forensics Functions - With the amazing [PowerForensics](https://github.com/Invoke-IR/PowerForensics) module, we hope that if you want to add items related to forensics you would submit a pull request to that project.
+- Get-SecAllAccounts - Changed name and rewrote as Get-SecAllADAccount
+- Forensics Functions - With the amazing [PowerForensics](https://github.com/Invoke-IR/PowerForensics) module, we hope that if you want to add items related to forensics you would submit a pull request to that project.
 
 ##### Installing PoshSec
 1. Download module
