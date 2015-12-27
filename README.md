@@ -44,6 +44,7 @@ The project maintains a Kanban board that anyone can view. You can view the boar
 ***Issues Status***
 
 [![Stories in Ready](https://badge.waffle.io/poshsec/poshsec.svg?label=In%20Progress&title=InProgress)](http://waffle.io/poshsec/poshsec)
+[![Backlog](https://badge.waffle.io/poshsec/poshsec.svg?label=Backlogs&title=Backlog)](http://waffle.io/poshsec/poshsec)
 
 
 ##### Community Information
