@@ -1,7 +1,7 @@
 ﻿@{
 
 # Script module or binary module file associated with this manifest.
-ModuleToProcess = 'poshsec.psm1'
+RootModule = 'poshsec.psm1'
 
 # Version number of this module.
 ModuleVersion = '2.0.0.0'
@@ -58,23 +58,23 @@ PowerShellVersion = '3.0'
 # NestedModules = @()
 
 # Functions to export from this module
-FunctionsToExport = '*'
+# FunctionsToExport = '*'
 
 # Cmdlets to export from this module
-CmdletsToExport = '*'
+# CmdletsToExport = '*'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = '*'
 
 # Aliases to export from this module
-AliasesToExport = '*'
+# AliasesToExport = '*'
 
 # List of all modules packaged with this module.
 ModuleList = @(@{ModuleName = 'account-monitoring-control'; ModuleVersion = '2.0.0'; GUID = '2cf86856-3550-4150-8aaa-b72e83f819b0'},
                @{ModuleName = 'authorized-devices'; ModuleVersion = '1.0.0.0'; GUID = 'd026637b-ddf4-46d0-baa5-08e93a11b682'},
                @{ModuleName = 'Auditing'; ModuleVersion = '2.0.0'; GUID = '3f07d251-84fe-4e42-bf6a-e10a179f0e97'},
                @{ModuleName = 'baselines'; ModuleVersion = '1.0.0.0'; GUID = '1cf19d58-94ef-47c3-a558-23417ea90681'},
-	       	   @{ModuleName = 'Intrusion-Detection'; ModuleVersion = '1.0.0'; GUID = '453cb418-7add-4bf8-83ed-6a4c1873c457'}
+	       	     @{ModuleName = 'Intrusion-Detection'; ModuleVersion = '1.0.0'; GUID = '453cb418-7add-4bf8-83ed-6a4c1873c457'}
                @{ModuleName = 'log-management'; ModuleVersion = '1.0.0.0'; GUID = 'b4e3aeb9-d19c-4fe6-84fd-3f23bf698833'},
                @{ModuleName = 'Malware-Detection'; ModuleVersion = '2.0.0'; GUID = '3631650d-5f48-42f2-92de-5f0b3531dc4b'},
                @{ModuleName = 'network-baseline'; ModuleVersion = '1.0.0.0'; GUID = 'dc438100-013e-42aa-98c0-81b8833d5e7a'},
