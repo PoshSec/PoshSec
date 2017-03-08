@@ -39,6 +39,34 @@ Describe -Name 'Get-DateISO8601' -Tags $Utility -Fixture {
   }
 }
 
+Describe -Name 'Confirm-SecIsAdministrator' -Tags $Utility -Fixture {
+  Context -Name 'Input' -Fixture {}
+  Context -Name 'Execution' -Fixture {
+    It -name 'Should run without exception' -test {
+      { Confirm-SecIsAdministrator } | Should Not Throw
+    }
+  }
+  Context -Name 'Output' -Fixture {
+    It -name 'Should produce the correct output' -test {
+      Confirm-SecIsAdministrator | Should Be $false
+    }
+  }
+}
+
+Describe -Name 'Confirm-Windows8Plus' -Tags $Utility -Fixture {
+  Context -Name 'Input' -Fixture {}
+  Context -Name 'Execution' -Fixture {
+    It -name 'Should run without exception' -test {
+      { Confirm-Windows8Plus } | Should Not Throw
+    }
+  }
+  Context -Name 'Output' -Fixture {
+    It -name 'Should produce the correct output' -test {
+      Confirm-Windows8Plus | Should Be $true
+    }
+  }
+}
+
 Describe -Name 'Convert-FQDNtoDN' -Tags $Utility -Fixture {
   Context -Name 'Input' -Fixture {}
   Context -Name 'Execution' -Fixture {}
