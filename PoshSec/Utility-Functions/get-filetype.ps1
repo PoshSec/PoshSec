@@ -24,14 +24,13 @@ www.poshsec.com
 github.com/poshsec
 #>
 
-
-[CmdletBinding()]
+[OutputType([string])]
 param(
-[parameter(Mandatory=$true)]
+[parameter(Mandatory=$true,HelpMessage='Please enter file type')]
 [String] $file
 )
-$result = "Error."
-if (Test-Path $file) {
+$result = 'Error.'
+if (Test-Path -Path $file) {
 
 [Byte[]] $header = Get-Content -Encoding Byte -Path $file -TotalCount 8
 
@@ -42,14 +41,14 @@ $a= [Convert]::ToString($byte,16).PadLeft(2,'0')
 
 switch -regex ($hex){
 
-'^4d5a'{$result = "$file is an EXE"}
-'^504b0304'{$result = "$file is a ZIP"}
-'^89504e47'{$result = "$file is a PNG"}
-'^ffd8ffe0'{$result = "$file is a JPG"}
-'^47494638'{$result = "$file is a GIF"}
-'^7f454c46'{$result = "$file is an ELF Binary"}
+'^4d5a'{$result = ('{0} is an EXE' -f $file)}
+'^504b0304'{$result = ('{0} is a ZIP' -f $file)}
+'^89504e47'{$result = ('{0} is a PNG' -f $file)}
+'^ffd8ffe0'{$result = ('{0} is a JPG' -f $file)}
+'^47494638'{$result = ('{0} is a GIF' -f $file)}
+'^7f454c46'{$result = ('{0} is an ELF Binary' -f $file)}
 
-default {$result = "File type unknown for $file"}
+default {$result = ('File type unknown for {0}' -f $file)}
 
 }
 
