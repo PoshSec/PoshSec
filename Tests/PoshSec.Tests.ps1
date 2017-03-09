@@ -47,8 +47,9 @@ Describe -Name 'Confirm-SecIsAdministrator' -Tags $Utility -Fixture {
     }
   }
   Context -Name 'Output' -Fixture {
-    It -name 'Should produce the correct output' -test {
-      Confirm-SecIsAdministrator | Should Be $false
+    It -name 'Should produce the correct output' -test{
+      # Check to see if it is boolean instead
+      (Confirm-SecIsAdministrator).GetType() | Should Be bool
     }
   }
 }
@@ -68,8 +69,13 @@ Describe -Name 'Confirm-Windows8Plus' -Tags $Utility -Fixture {
 }
 
 Describe -Name 'Convert-FQDNtoDN' -Tags $Utility -Fixture {
-  Context -Name 'Input' -Fixture {}
-  Context -Name 'Execution' -Fixture {}
+  Context -Name 'Input' -Fixture {
+  }
+  Context -Name 'Execution' -Fixture {
+    It -name 'Should not throw' -test {
+      { Convert-FQDNtoDN -domainFQDN 'dev.poshsec.com' } | Should Not Throw
+    }
+  }
   Context -Name 'Output' -Fixture {
     It -name 'Should produce a correct distinguished name' -test {
       $Command = @(Convert-FQDNtoDN -domainFQDN 'dev.poshsec.com')
