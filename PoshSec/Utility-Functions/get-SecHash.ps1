@@ -2,59 +2,62 @@
 
 function Get-SECHash
 {
-<#  
-.SYNOPSIS
+  <#  
+      .SYNOPSIS
     
-Generates a hash value for a file. 
+      Generates a hash value for a file. 
     
-.DESCRIPTION
+      .DESCRIPTION
     
-Creates XML files to upload/compare the current DRS configuration and verify related registry settings on remote servers. 
-Optionally report on the status for each server through a HTML formated report. 
+      Creates XML files to upload/compare the current DRS configuration and verify related registry settings on remote servers. 
+      Optionally report on the status for each server through a HTML formated report. 
     
-.PARAMETER Path
-File to be hashed
+      .PARAMETER Path
+      File to be hashed
 
-.PARAMETER HashType
-Hashing algorithm to be used, default is SHA-1.  Can also be set to SHA-256, SHA-512, or MD5. 
+      .PARAMETER HashType
+      Hashing algorithm to be used, default is SHA-256.  Can also be set to SHA-1, SHA-512, or MD5. 
     
-.EXAMPLE
- Get-SECHash C:\windows\notepad.exe -hashType SHA256   
+      .EXAMPLE
+      Get-SECHash C:\windows\notepad.exe -hashType SHA256   
 
-Generates a SHA-256 hash of notepad.exe's binary.
+      Generates a SHA-256 hash of notepad.exe's binary.
 
-.LINK
-Poshsec Github  : https://github.com/PoshSec/PoshSec
+      .LINK
+      Poshsec Github  : https://github.com/PoshSec/PoshSec
 
-#>
+  #>
 
-param(
-[parameter(Mandatory=$true)]
-[String] $path,
+  [OutputType([string])]
+  [CmdletBinding()]
+  param(
+    [parameter(Mandatory=$true)]
+    [String] $path,
 
-[ValidateSet("SHA1","SHA256","SHA512","MD5")]
-[String] $hashType = "SHA1"
-)
+    [ValidateSet("SHA1","SHA256","SHA512","MD5")]
+    [String] $hashType = "SHA256"
+  )
+
+  Write-Verbose -Message "[$((Get-Date).TimeOfDay) BEGIN] Starting $($mycommand.myinvocation)"
+  
+  $hashFactory = [Type] "System.Security.Cryptography.$hashType"
+  $hasher = $hashFactory::Create()
+
+  if(Test-Path $path -PathType Leaf){
 
 
-$hashFactory = [Type] "System.Security.Cryptography.$hashType"
-$hasher = $hashFactory::Create()
+    $bytes = New-Object IO.StreamReader ((Resolve-Path $path).Path)
+    $hashed = $hasher.ComputeHash($bytes.BaseStream)
+    $bytes.Close()
 
-if(Test-Path $path -PathType Leaf){
+    $final = New-Object System.Text.StringBuilder
+    $hashed | ForEach-Object { [void] $final.Append($_.toString("X2")) }
 
-
-$bytes = New-Object IO.StreamReader ((Resolve-Path $path).Path)
-$hashed = $hasher.ComputeHash($bytes.BaseStream)
-$bytes.Close()
-
-$final = New-Object System.Text.StringBuilder
-$hashed | ForEach-Object { [void] $final.Append($_.toString("X2")) }
-
-Write-Output $final.ToString()
-}
-else{
-Write-Error "Invalid File path"
-}
-
+    Write-Output $final.ToString()
+  }
+  else{
+    Write-Error "Invalid File path"
+  }
+  Write-Verbose -Message "[$((Get-Date).TimeOfDay) END] Ending $($mycommand.myinvocation)"
 
 }
