@@ -16,11 +16,11 @@ install:
 build_script:
   - ps: |
       $testResultsFile = Join-Path $pwd -ChildPath "$PSScriptRoot/TestResults.xml"
-      $testResultsFile
-      Invoke-psake build.psake.ps1 -properties @{"TestOutputFile" = $testResultsFile}
+      Invoke-psake ./build.psake.ps1 -taskList Test, BuildHelp -properties @{"TestOutputFile" = $testResultsFile}
       if ($psake.build_success -and (Test-Path $testResultsFile)) {
-        (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", $testResultsFile)
-      } else {
+          (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", $testResultsFile)
+      }
+      else {
           # Terminate the script to fail the build
           $Error | Format-List * -Force
           exit 1;
