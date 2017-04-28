@@ -1,1 +1,0 @@
-﻿. (Join-Path $PSScriptRoot Get-SecNewProcessCreation.ps1)

@@ -1,4 +1,0 @@
-C:\Users\Matt\Documents\GitHub\OPoshsec\PoshSec\PoshSec\PoshSec.PowerShell.Commands\PoshSec.PowerShell.Commands\bin\Release\PoshSec.PowerShell.Commands.dll
-C:\Users\Matt\Documents\GitHub\OPoshsec\PoshSec\PoshSec\PoshSec.PowerShell.Commands\PoshSec.PowerShell.Commands\bin\Release\PoshSec.PowerShell.Commands.pdb
-C:\Users\Matt\Documents\GitHub\OPoshsec\PoshSec\PoshSec\PoshSec.PowerShell.Commands\PoshSec.PowerShell.Commands\obj\Release\PoshSec.PowerShell.Commands.dll
-C:\Users\Matt\Documents\GitHub\OPoshsec\PoshSec\PoshSec\PoshSec.PowerShell.Commands\PoshSec.PowerShell.Commands\obj\Release\PoshSec.PowerShell.Commands.pdb

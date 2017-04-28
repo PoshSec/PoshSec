@@ -1,6 +1,0 @@
-﻿. (Join-Path $PSScriptRoot Compare-SecOpenPort.ps1)
-. (Join-Path $PSScriptRoot Get-SecOpenPort.ps1)
-. (Join-Path $PSScriptRoot Get-SecOpenPorts.ps1)
-. (Join-Path $PSScriptRoot Set-SecFireWallSettings.ps1)
-. (Join-Path $PSScriptRoot Compare-SecWirelessNetwork.ps1)
-. (Join-Path $PSScriptRoot Get-SecWirelessNetwork.ps1)
