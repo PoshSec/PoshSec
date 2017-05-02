@@ -16,7 +16,8 @@ install:
 build_script:
   - ps: |
       $testResultsFile = Join-Path $pwd -ChildPath "$PSScriptRoot/TestResults.xml"
-      Invoke-psake -buildfile build.psake.ps1 -properties @{"TestOutputFile" = $testResultsFile}
+      #Invoke-psake -buildfile build.psake.ps1 -properties @{"TestOutputFile" = $testResultsFile} -
+      ./build.ps1
       if ($psake.build_success -and (Test-Path $testResultsFile)) {
           (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", $testResultsFile)
       }
@@ -26,10 +27,10 @@ build_script:
           exit 1;
       }
 
-on_finish:
-    - ps: |
-        # Publish the contents of the Release folder
-        Add-Type -assemblyname System.IO.Compression.FileSystem
-        $zipPath = "$pwd\PoshSec.zip"
-        [System.IO.Compression.ZipFile]::CreateFromDirectory("$pwd\Release", $zipPath)
-        Push-AppveyorArtifact $zipPath
+#on_finish:
+#    - ps: |
+        # Publish the contents of the Release folder#
+        #Add-Type -assemblyname System.IO.Compression.FileSystem
+        #$zipPath = "$pwd\PoshSec.zip"
+        #[System.IO.Compression.ZipFile]::CreateFromDirectory("$pwd\Release", $zipPath)
+        #Push-AppveyorArtifact $zipPath
