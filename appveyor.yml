@@ -33,5 +33,5 @@ on_finish:
         Add-Type -assemblyname System.IO.Compression.FileSystem
         $zipPath = "$pwd\PoshSec.zip"
         [System.IO.Compression.ZipFile]::CreateFromDirectory("$pwd\Release", $zipPath)
-        #if (Test-Path $zipPath) { Push-AppveyorArtifact $zipPath | Out-Null }
-        Push-AppveyorArtifact $zipPath
+        if (Test-Path $zipPath) { Push-AppveyorArtifact $zipPath | Out-Null }
+        #Push-AppveyorArtifact $zipPath
