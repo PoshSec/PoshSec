@@ -33,5 +33,8 @@ on_finish:
         # Publish the contents of the Release folder#
         Add-Type -assemblyname System.IO.Compression.FileSystem
         $zipPath = "$pwd\PoshSec.zip"
+        Write-Host $zipPath
         [System.IO.Compression.ZipFile]::CreateFromDirectory("$pwd\Release", $zipPath)
-        Push-AppveyorArtifact $zipPath
+        if (Test-Path $zipPath) {
+            Push-AppveyorArtifact $zipPath
+        }
