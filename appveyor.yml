@@ -15,7 +15,8 @@ install:
 
 build_script:
   - ps: |
-      #$testResultsFile = Join-Path $pwd -ChildPath "$PSScriptRoot/TestResults.xml"
+      $testResultsFile = Join-Path $pwd -ChildPath "$PSScriptRoot/TestResults.xml"
+      Write-Host $testResultsFile
       #Invoke-psake -buildfile build.psake.ps1 #-properties @{"TestOutputFile" = $testResultsFile}
       ./build.ps1
       #if ($psake.build_success -and (Test-Path $testResultsFile)) {
