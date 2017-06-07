@@ -10,11 +10,11 @@ Function Convert-FQDNtoDN
       .NOTES
         This is a PoshSec Utility Function.
       .EXAMPLE
-        Convert-SecFQDNtoDN -domainFQDN 'poshsec.com'
+        Convert-FQDNtoDN -domainFQDN 'poshsec.com'
 
         DC=poshsec,DC=com
       .EXAMPLE
-        Convert-SecFQDNtoDN 'dev.contoso.net'
+        Convert-FQDNtoDN 'dev.contoso.net'
 
         DC=dev,DC=contoso,DC=NET
 
