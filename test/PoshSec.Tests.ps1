@@ -1,5 +1,5 @@
 [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '', Scope='*', Target='SuppressImportModule')]
-$SuppressImportModule = $true
+$SuppressImportModule = $false
 . $PSScriptRoot\Shared.ps1
 
 Describe 'Module Manifest Tests' {
