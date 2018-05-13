@@ -5,6 +5,7 @@
 # Utility Functions
 . $PSScriptRoot\Utility\Convert-FQDNtoDN.ps1
 . $PSScriptRoot\Utility\Confirm-IsAdministrator.ps1
+. $PSScriptRoot\Utility\Confirm-Windows8Plus
 
 # Export only the functions using PowerShell standard verb-noun naming.
 Export-ModuleMember -Function *-*
