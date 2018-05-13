@@ -21,6 +21,11 @@ Describe 'Utility Functions' {
             Convert-FQDNtoDN 'poshsec.ad' | Should be 'dc=poshsec,dc=ad'
         }
     }
+    Context 'Confirm-Windows8Plus' {
+        It 'Runs without errors' {
+            Confirm-Windows8Plus | Should be $true
+        }
+    }
 }
 
 Describe 'PoshSec Module Help Tests' {
