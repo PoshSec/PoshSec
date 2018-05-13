@@ -24,10 +24,10 @@ GUID = '76c99b92-aca2-4726-a455-f2a77ab4171b'
 Author = 'PoshSec'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+CompanyName = 'PoshSec'
 
 # Copyright statement for this module
-Copyright = '(c) 2017 PoshSec. All rights reserved.'
+Copyright = '(c) 2018 PoshSec. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'PoshSec Security PowerShell Module'
