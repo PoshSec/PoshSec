@@ -27,9 +27,9 @@ function Get-EnterpriseAdmins {
     $DN = $CurrentDomain.DistinguishedName
     Write-Debug -Message "Set Distinguished Name to $DN"
     $EnterpriseAdmins = [ADSI]"LDAP://cn=Enterprise Admins,cn=Users,$DN"
-    Write-Debug -Message "Set Domain Admin string to $DomainAdmins"
+    Write-Debug -Message "Set Domain Admin string to $EnterpriseAdmins"
 
-    Foreach($Member in $DomainAdmins.Member) {
+    Foreach($Member in $EnterpriseAdmins.Member) {
         $MemberDN = [ADSI]"LDAP://$Member"
         Write-Debug -Message "MemberDN: $MemberDN"
         $HashTable = [PSCustomObject]@{

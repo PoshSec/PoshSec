@@ -20,17 +20,12 @@ function Get-DomainAdmins {
         [string]$Domain = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
     )
 
-
-    #Domain = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
     $CurrentDomain = [ADSI]"LDAP://$Domain"
     Write-Debug -Message "Set ADSI Connection to $CurrentDomain"
     $DN = $CurrentDomain.DistinguishedName
     Write-Debug -Message "Set Distinguished Name to $DN"
     $DomainAdmins = [ADSI]"LDAP://cn=Domain Admins,cn=Users,$DN"
     Write-Debug -Message "Set Domain Admin string to $DomainAdmins"
-
-    $ItemCount = $DomainAdmins.Count
-    #Write-Verbose -Message "Total number of members: $ItemCount"
 
     Foreach($Member in $DomainAdmins.Member) {
         $MemberDN = [ADSI]"LDAP://$Member"
