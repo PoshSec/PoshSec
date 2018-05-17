@@ -7,7 +7,11 @@ function Get-DomainAdmins {
     Obtains the list of domain admins for the current or specified domain.
 
     .EXAMPLE
-    PS> Get-SecDomainAdmins
+    PS> Get-DomainAdmins
+            DisplayName     SamAccountName      DistinguishedName
+            ----------      -------------       -----------------'
+            TestAccount     TestAccount         cn=TestAccount,OU=PoshSec,DC=PoshSec,DC=Com
+            Bob Uncle       Bob.Uncle           cn=Bob Uncle,OU=PoshSec,DC=PoshSec,DC=Com
 
     .NOTES
     Part of the PoshSec PowerShell Module

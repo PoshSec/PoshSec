@@ -7,7 +7,11 @@ function Get-EnterpriseAdmins {
     Obtains the list of Enterprise admins for the current or specified domain.
 
     .EXAMPLE
-    PS> Get-SecEnterpriseAdmins
+    PS> Get-EnterpriseAdmins
+            DisplayName     SamAccountName      DistinguishedName
+            ----------      -------------       -----------------'
+            TestAccount     TestAccount         cn=TestAccount,OU=PoshSec,DC=PoshSec,DC=Com
+            Bob Uncle       Bob.Uncle           cn=Bob Uncle,OU=PoshSec,DC=PoshSec,DC=Com
 
     .NOTES
     Part of the PoshSec PowerShell Module
