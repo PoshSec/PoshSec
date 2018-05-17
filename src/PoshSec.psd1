@@ -71,7 +71,7 @@ Description = 'PoshSec Security PowerShell Module'
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @(
     # Account Management Functions
-    'Get-DomainAdmins', 'Get-EnterpriseAdmins',
+    'Get-DomainAdmins', 'Get-EnterpriseAdmins', 'Get-AccountsThatDontExpire'
     # Utility Functions
     'Convert-FQDNtoDN', 'Confirm-IsAdministrator', 'Confirm-Windows8Plus'
 )
