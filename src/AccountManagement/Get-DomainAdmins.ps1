@@ -31,8 +31,9 @@ function Get-DomainAdmins {
         $MemberDN = [ADSI]"LDAP://$Member"
         Write-Debug -Message "MemberDN: $MemberDN"
         $HashTable = [PSCustomObject]@{
-            SamAccountName = $MemberDN.SamAccountName
-            DisplayName = $MemberDN.DisplayName
+            DisplayName = $MemberDN.DisplayName | ForEach-Object {$_}
+            SamAccountName = $MemberDN.SamAccountName | ForEach-Object {$_}
+            DistinguishedName = $MemberDN.DistinguishedName | ForEach-Object {$_}
         }
         Write-Output $HashTable
     }
