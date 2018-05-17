@@ -2,6 +2,7 @@
 # Account Management Functions
 . $PSScriptRoot\AccountManagement\Get-DomainAdmins.ps1
 . $PSScriptRoot\AccountManagement\Get-EnterpriseAdmins.ps1
+. $PSScriptRoot\AccountManagement\Get-Administrators.ps1
 . $PSScriptRoot\AccountManagement\Get-AccountsThatDontExpire.ps1
 . $PSScriptRoot\AccountManagement\Get-AccountsThatExpire.ps1
 
