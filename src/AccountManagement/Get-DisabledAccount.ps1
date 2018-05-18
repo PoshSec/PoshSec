@@ -25,6 +25,7 @@ function Get-DisabledAccount {
     .DESCRIPTION
     Gets current list of disabled accounts in Active Directory
 
+    .EXAMPLE
     PS> Get-DisabledAccount
             DisplayName     SamAccountName      DistinguishedName
             ----------      -------------       -----------------'
