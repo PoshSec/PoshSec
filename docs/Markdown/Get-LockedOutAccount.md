@@ -5,25 +5,25 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-DisabledAccount
+# Get-LockedOutAccount
 
 ## SYNOPSIS
-Gets current list of disabled accounts in Active Directory.
+Gets current list of locked out accounts in Active Directory.
 
 ## SYNTAX
 
 ```
-Get-DisabledAccount [<CommonParameters>]
+Get-LockedOutAccount [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets current list of disabled accounts in Active Directory
+Gets current list of locked out accounts in Active Directory
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-DisabledAccount
+Get-LockedOutAccount
 ```
 
 DisplayName     SamAccountName      DistinguishedName
@@ -34,7 +34,8 @@ DisplayName     SamAccountName      DistinguishedName
 ## PARAMETERS
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
