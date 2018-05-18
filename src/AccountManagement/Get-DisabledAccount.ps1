@@ -11,9 +11,9 @@ function Get-DisabledAccount {
         $Disabled = ([adsi]$_.path).psbase.invokeGet("useraccountcontrol")
         if ($Disabled -band '0x2') {
             $PSObject = [PSCustomObject]@{
-                DisplayName = ([ADSO]$_.path).DisplayName | ForEach-Object {$_}
-                SamAccountName = ([ADSO]$_.path).SamAccountName | ForEach-Object {$_}
-                DistinguishedName = ([ADSO]$_.path).DistinguishedName | ForEach-Object {$_}
+                DisplayName = ([ADSI]$_.path).DisplayName | ForEach-Object {$_}
+                SamAccountName = ([ADSI]$_.path).SamAccountName | ForEach-Object {$_}
+                DistinguishedName = ([ADSI]$_.path).DistinguishedName | ForEach-Object {$_}
             }
             Write-Output -InputObject $PSObject
         }
