@@ -7,6 +7,8 @@
 . $PSScriptRoot\AccountManagement\Get-AccountsThatExpire.ps1
 . $PSScriptRoot\AccountManagement\Get-DisabledAccount.ps1
 . $PSScriptRoot\AccountManagement\Get-LockedOutAccount.ps1
+. $PSScriptRoot\AccountManagement\Get-InactiveAccount.ps1
+. $PSScriptRoot\AccountManagement\Get-AccountsThatNeverLoggedIn.ps1
 
 # Utility Functions
 . $PSScriptRoot\Utility\Convert-FQDNtoDN.ps1
