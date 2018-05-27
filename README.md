@@ -1,5 +1,6 @@
 # PoshSec
 
+[![license](https://img.shields.io/badge/license-BSD--Clause3-green.svg)](https://github.com/poshsec/poshsec/blob/master/LICENSE.md)
 
 PoshSec is a Microsoft Windows PowerShell module that focuses on Auditing,
 Detection and System Protection.
