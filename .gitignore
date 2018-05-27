@@ -1,4 +1,4 @@
 # Don't checkin the Release output dir.
 Release/
-Docs/Cab/
-Docs/en-US/
+docs/cab/
+docs/en-US/
