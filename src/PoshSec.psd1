@@ -24,10 +24,10 @@ GUID = '76c99b92-aca2-4726-a455-f2a77ab4171b'
 Author = 'PoshSec'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+CompanyName = 'PoshSec'
 
 # Copyright statement for this module
-Copyright = '(c) 2017 PoshSec. All rights reserved.'
+Copyright = '(c) 2018 PoshSec. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'PoshSec Security PowerShell Module'
@@ -69,16 +69,21 @@ Description = 'PoshSec Security PowerShell Module'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = '*'
+FunctionsToExport = @(
+    # Account Management Functions
+    'Get-DomainAdmins', 'Get-EnterpriseAdmins', 'Get-Administrators', 'Get-AccountsThatDontExpire', 'Get-AccountsThatExpire', 'Get-DisabledAccount', 'Get-LockedOutAccount', 'Get-InactiveAccount', 'Get-AccountsThatNeverLoggedIn'
+    # Utility Functions
+    'Convert-FQDNtoDN', 'Confirm-IsAdministrator', 'Confirm-Windows8Plus'
+)
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = '*'
+# CmdletsToExport = '*'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = '*'
+# AliasesToExport = '*'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -114,10 +119,10 @@ PrivateData = @{
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
-# HelpInfoURI = ''
+HelpInfoURI = 'https://www.poshsec.com/help/'
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+# DefaultCommandPrefix = 'Sec'
 
 }
 
